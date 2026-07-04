@@ -48,7 +48,7 @@ export default function ChatPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-dark noise-bg flex items-center justify-center">
+      <div className="min-h-screen bg-[#edf6fd] noise-bg flex items-center justify-center">
         <div className="glass rounded-2xl p-8 text-center animate-fade-in">
           <div className="w-16 h-16 rounded-full bg-primary-400/10 flex items-center justify-center mx-auto mb-4 animate-pulse">
             <MessageCircle className="w-8 h-8 text-primary-400" />
@@ -60,13 +60,13 @@ export default function ChatPage() {
   }
 
   return (
-    <div className="min-h-[calc(100vh-108px)] bg-dark noise-bg flex flex-col">
+    <div className="min-h-[calc(100vh-108px)] bg-[#edf6fd] noise-bg flex flex-col">
       <div className="container-responsive flex-1 flex flex-col py-6">
         {/* Header */}
         <div className="flex items-center gap-2 text-sm text-neutral-500 mb-6 animate-fade-in">
           <Link href="/messages" className="hover:text-primary-400 transition-colors">Messages</Link>
           <ChevronRight className="w-3 h-3" />
-          <span className="text-white font-semibold">{t('messages.conversation')}</span>
+          <span className="text-primary-800 font-semibold">{t('messages.conversation')}</span>
         </div>
 
         {/* Messages container */}
@@ -84,11 +84,11 @@ export default function ChatPage() {
               <div key={msg.id} className={`flex ${msg.senderId === 'me' ? 'justify-end' : 'justify-start'}`}>
                 <div className={`max-w-[70%] rounded-2xl px-5 py-3 ${
                   msg.senderId === 'me'
-                    ? 'bg-gradient-to-r from-primary-400 to-primary-500 text-black'
-                    : 'glass text-white'
+                    ? 'bg-gradient-to-r from-primary-400 to-primary-500 text-white'
+                    : 'glass text-primary-800'
                 }`}>
                   <p className="text-sm">{msg.content}</p>
-                  <p className={`text-[10px] mt-1 ${msg.senderId === 'me' ? 'text-black/60' : 'text-neutral-500'}`}>
+                  <p className={`text-[10px] mt-1 ${msg.senderId === 'me' ? 'text-white/60' : 'text-neutral-500'}`}>
                     {new Date(msg.createdAt).toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })}
                   </p>
                 </div>
@@ -98,7 +98,7 @@ export default function ChatPage() {
           </div>
 
           {/* Input */}
-          <div className="p-6 border-t border-white/5">
+          <div className="p-6 border-t border-primary-100">
             <div className="flex items-center gap-3">
               <input
                 type="text"
@@ -106,12 +106,12 @@ export default function ChatPage() {
                 onChange={(e) => setNewMessage(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && !e.shiftKey && handleSend()}
                 placeholder={t('messages.writePlaceholder')}
-                className="flex-1 h-12 px-5 text-sm rounded-xl glass text-white placeholder:text-neutral-600 focus:border-primary-400/50 outline-none transition-all"
+                className="flex-1 h-12 px-5 text-sm rounded-xl glass text-primary-800 placeholder:text-neutral-600 focus:border-primary-400/50 outline-none transition-all"
               />
               <button
                 onClick={handleSend}
                 disabled={sending || !newMessage.trim()}
-                className="w-12 h-12 bg-gradient-to-r from-primary-400 to-primary-500 hover:from-primary-500 hover:to-primary-600 text-black rounded-xl flex items-center justify-center transition-all disabled:opacity-50 shadow-lg shadow-primary-400/20 glow-sm"
+                className="w-12 h-12 bg-gradient-to-r from-primary-400 to-primary-500 hover:from-primary-500 hover:to-primary-600 text-white rounded-xl flex items-center justify-center transition-all disabled:opacity-50 shadow-lg shadow-primary-400/20 glow-sm"
               >
                 <Send className="w-5 h-5" />
               </button>

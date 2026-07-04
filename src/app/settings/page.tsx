@@ -42,15 +42,15 @@ export default function SettingsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-dark noise-bg">
+    <div className="min-h-screen bg-[#edf6fd] noise-bg">
       <div className="container-responsive py-10 max-w-2xl">
         {/* Header */}
         <div className="mb-10 animate-fade-in">
           <div className="inline-flex items-center gap-2 glass rounded-full px-4 py-2 mb-4">
             <Settings className="w-4 h-4 text-primary-400" />
-            <span className="text-xs font-semibold text-neutral-300">{t('settings.badge')}</span>
+            <span className="text-xs font-semibold text-primary-700">{t('settings.badge')}</span>
           </div>
-          <h1 className="text-4xl font-black text-white mb-2">{t('settings.title')}</h1>
+          <h1 className="text-4xl font-black text-primary-800 mb-2">{t('settings.title')}</h1>
           <p className="text-neutral-400">{t('settings.subtitle')}</p>
         </div>
 
@@ -71,27 +71,27 @@ export default function SettingsPage() {
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Personal info */}
           <div className="glass rounded-3xl p-8 animate-fade-in">
-            <h2 className="text-lg font-bold text-white mb-6 flex items-center gap-2">
+            <h2 className="text-lg font-bold text-primary-800 mb-6 flex items-center gap-2">
               <User className="w-5 h-5 text-primary-400" />
               {t('settings.personalInfo')}
             </h2>
             <div className="space-y-4">
               <div>
-                <label className="block text-sm font-semibold text-neutral-300 mb-2">{t('settings.fullName')}</label>
+                <label className="block text-sm font-semibold text-primary-700 mb-2">{t('settings.fullName')}</label>
                 <input
                   type="text"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="w-full h-12 px-4 text-sm rounded-xl glass text-white placeholder:text-neutral-600 focus:border-primary-400/50 outline-none transition-all"
+                  className="w-full h-12 px-4 text-sm rounded-xl glass text-primary-800 placeholder:text-neutral-600 focus:border-primary-400/50 outline-none transition-all"
                 />
               </div>
               <div>
-                <label className="block text-sm font-semibold text-neutral-300 mb-2">{t('settings.email')}</label>
+                <label className="block text-sm font-semibold text-primary-700 mb-2">{t('settings.email')}</label>
                 <input
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full h-12 px-4 text-sm rounded-xl glass text-white placeholder:text-neutral-600 focus:border-primary-400/50 outline-none transition-all"
+                  className="w-full h-12 px-4 text-sm rounded-xl glass text-primary-800 placeholder:text-neutral-600 focus:border-primary-400/50 outline-none transition-all"
                 />
               </div>
             </div>
@@ -99,29 +99,29 @@ export default function SettingsPage() {
 
           {/* Password */}
           <div className="glass rounded-3xl p-8 animate-fade-in">
-            <h2 className="text-lg font-bold text-white mb-6 flex items-center gap-2">
+            <h2 className="text-lg font-bold text-primary-800 mb-6 flex items-center gap-2">
               <Lock className="w-5 h-5 text-primary-400" />
               {t('settings.changePassword')}
             </h2>
             <div className="space-y-4">
               <div>
-                <label className="block text-sm font-semibold text-neutral-300 mb-2">{t('settings.currentPassword')}</label>
+                <label className="block text-sm font-semibold text-primary-700 mb-2">{t('settings.currentPassword')}</label>
                 <input
                   type="password"
                   value={currentPassword}
                   onChange={(e) => setCurrentPassword(e.target.value)}
                   placeholder="••••••••"
-                  className="w-full h-12 px-4 text-sm rounded-xl glass text-white placeholder:text-neutral-600 focus:border-primary-400/50 outline-none transition-all"
+                  className="w-full h-12 px-4 text-sm rounded-xl glass text-primary-800 placeholder:text-neutral-600 focus:border-primary-400/50 outline-none transition-all"
                 />
               </div>
               <div>
-                <label className="block text-sm font-semibold text-neutral-300 mb-2">{t('settings.newPassword')}</label>
+                <label className="block text-sm font-semibold text-primary-700 mb-2">{t('settings.newPassword')}</label>
                 <input
                   type="password"
                   value={newPassword}
                   onChange={(e) => setNewPassword(e.target.value)}
                   placeholder="Minimum 6 caractères"
-                  className="w-full h-12 px-4 text-sm rounded-xl glass text-white placeholder:text-neutral-600 focus:border-primary-400/50 outline-none transition-all"
+                  className="w-full h-12 px-4 text-sm rounded-xl glass text-primary-800 placeholder:text-neutral-600 focus:border-primary-400/50 outline-none transition-all"
                 />
               </div>
             </div>
@@ -130,7 +130,7 @@ export default function SettingsPage() {
           <button
             type="submit"
             disabled={loading}
-            className="px-8 py-3 bg-gradient-to-r from-primary-400 to-primary-500 hover:from-primary-500 hover:to-primary-600 text-black font-bold text-sm rounded-xl transition-all disabled:opacity-50 shadow-lg shadow-primary-400/20 glow-sm"
+            className="px-8 py-3 bg-gradient-to-r from-primary-400 to-primary-500 hover:from-primary-500 hover:to-primary-600 text-white font-bold text-sm rounded-xl transition-all disabled:opacity-50 shadow-lg shadow-primary-400/20 glow-sm"
           >
             {loading ? t('settings.saving') : t('settings.saveChanges')}
           </button>

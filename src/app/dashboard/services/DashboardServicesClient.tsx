@@ -25,14 +25,14 @@ export default function DashboardServicesClient({ hasFreelance, services }: Dash
 
   if (!hasFreelance) {
     return (
-      <div className="min-h-screen bg-dark noise-bg">
+      <div className="min-h-screen bg-[#edf6fd] noise-bg">
         <div className="container-responsive py-10">
           <div className="glass rounded-3xl p-16 text-center">
             <div className="w-24 h-24 rounded-full bg-primary-400/10 flex items-center justify-center mx-auto mb-6">
               <Briefcase className="w-12 h-12 text-primary-400/50" />
             </div>
             <p className="text-xl text-neutral-400 mb-4">{t('dashboardServices.needProfile')}</p>
-            <a href="/settings/freelance" className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-primary-400 to-primary-500 hover:from-primary-500 hover:to-primary-600 text-black font-bold text-sm rounded-xl transition-all shadow-lg shadow-primary-400/20 glow-sm group">
+            <a href="/settings/freelance" className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-primary-400 to-primary-500 hover:from-primary-500 hover:to-primary-600 text-white font-bold text-sm rounded-xl transition-all shadow-lg shadow-primary-400/20 glow-sm group">
               {t('earnings.createProfile')}
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </a>
@@ -43,15 +43,15 @@ export default function DashboardServicesClient({ hasFreelance, services }: Dash
   }
 
   return (
-    <div className="min-h-screen bg-dark noise-bg">
+    <div className="min-h-screen bg-[#edf6fd] noise-bg">
       <div className="container-responsive py-10">
         {/* Header */}
         <div className="mb-10 animate-fade-in">
           <div className="inline-flex items-center gap-2 glass rounded-full px-4 py-2 mb-4">
             <Briefcase className="w-4 h-4 text-primary-400" />
-            <span className="text-xs font-semibold text-neutral-300">{t('dashboardServices.badge')}</span>
+            <span className="text-xs font-semibold text-primary-700">{t('dashboardServices.badge')}</span>
           </div>
-          <h1 className="text-4xl font-black text-white mb-2">{t('dashboardServices.title')}</h1>
+          <h1 className="text-4xl font-black text-primary-800 mb-2">{t('dashboardServices.title')}</h1>
           <p className="text-neutral-400">{t('dashboardServices.subtitle')}</p>
         </div>
 
@@ -70,9 +70,9 @@ export default function DashboardServicesClient({ hasFreelance, services }: Dash
                       <Briefcase className="w-6 h-6 text-primary-400" />
                     </div>
                     <div className="flex-1">
-                      <p className="text-base font-bold text-white mb-1">{service.title}</p>
+                      <p className="text-base font-bold text-primary-800 mb-1">{service.title}</p>
                       <div className="flex items-center gap-3 text-xs text-neutral-500">
-                        <span className="px-3 py-1 rounded-full bg-white/5 border border-white/10">{service.category}</span>
+                        <span className="px-3 py-1 rounded-full bg-primary-50/50 border border-primary-200">{service.category}</span>
                         <span>•</span>
                         <span className="text-primary-400 font-bold">{formatPrice(service.price)}</span>
                         <span>•</span>
@@ -94,7 +94,7 @@ export default function DashboardServicesClient({ hasFreelance, services }: Dash
               <Briefcase className="w-12 h-12 text-primary-400/50" />
             </div>
             <p className="text-xl text-neutral-400 mb-4">{t('dashboardServices.noService')}</p>
-            <a href="/services/create" className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-primary-400 to-primary-500 hover:from-primary-500 hover:to-primary-600 text-black font-bold text-sm rounded-xl transition-all shadow-lg shadow-primary-400/20 glow-sm group">
+            <a href="/services/create" className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-primary-400 to-primary-500 hover:from-primary-500 hover:to-primary-600 text-white font-bold text-sm rounded-xl transition-all shadow-lg shadow-primary-400/20 glow-sm group">
               {t('dashboardServices.createFirst')}
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </a>

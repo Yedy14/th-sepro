@@ -21,7 +21,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   ];
 
   return (
-    <div className="min-h-screen bg-dark">
+    <div className="min-h-screen bg-[#edf6fd]">
       <div className="container-responsive py-8">
         <div className="grid lg:grid-cols-[240px_1fr] gap-8">
           {/* Sidebar */}
@@ -31,13 +31,13 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                 <Link
                   key={href}
                   href={href}
-                  className="flex items-center gap-3 px-4 py-2.5 text-sm text-neutral-400 hover:text-white hover:bg-neutral-900 rounded-lg transition-colors"
+                  className="flex items-center gap-3 px-4 py-2.5 text-sm text-neutral-400 hover:text-primary-800 hover:bg-primary-50 rounded-lg transition-colors"
                 >
                   <Icon className="w-4 h-4" />
                   {label}
                 </Link>
               ))}
-              <button onClick={handleLogout} className="flex items-center gap-3 px-4 py-2.5 text-sm text-red-400 hover:text-red-300 hover:bg-neutral-900 rounded-lg transition-colors w-full">
+              <button onClick={handleLogout} className="flex items-center gap-3 px-4 py-2.5 text-sm text-red-400 hover:text-red-300 hover:bg-primary-50 rounded-lg transition-colors w-full">
                 <LogOut className="w-4 h-4" />
                 {t('dashboard.nav.logout')}
               </button>

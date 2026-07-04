@@ -52,9 +52,9 @@ export function ServicesClient({ services, categories, freelances }: ServicesCli
   ];
 
   return (
-    <div className="min-h-screen bg-dark noise-overlay">
+    <div className="min-h-screen bg-[#edf6fd] noise-overlay">
       {/* Hero header with gradient */}
-      <div className="relative overflow-hidden border-b border-neutral-800/50">
+      <div className="relative overflow-hidden border-b border-primary-100/50">
         <div className="absolute inset-0 bg-gradient-to-br from-neutral-950 via-dark to-neutral-950" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(234,179,8,0.08),transparent_50%)]" />
         
@@ -62,11 +62,11 @@ export function ServicesClient({ services, categories, freelances }: ServicesCli
           <div className="flex flex-col md:flex-row md:items-end gap-6 justify-between">
             <div className="animate-slide-up">
               <nav className="flex items-center gap-2 text-sm text-neutral-500 mb-4">
-                <Link href="/" className="hover:text-white transition-colors">{t('common.home')}</Link>
+                <Link href="/" className="hover:text-primary-800 transition-colors">{t('common.home')}</Link>
                 <span>/</span>
-                <span className="text-neutral-300">{t('services.breadcrumb')}</span>
+                <span className="text-primary-700">{t('services.breadcrumb')}</span>
               </nav>
-              <h1 className="text-4xl md:text-5xl font-black text-white mb-3">
+              <h1 className="text-4xl md:text-5xl font-black text-primary-800 mb-3">
                 {t('services.title1')} <span className="text-gradient-primary">{t('services.title2')}</span>
               </h1>
               <p className="text-neutral-400 text-lg">{filtered.length} {t('services.available')}</p>
@@ -81,13 +81,13 @@ export function ServicesClient({ services, categories, freelances }: ServicesCli
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                   placeholder={t('services.searchPlaceholder')}
-                  className="w-full h-12 pl-11 pr-4 text-sm rounded-xl glass text-white placeholder:text-neutral-500 focus:border-primary-400/50 outline-none transition-all"
+                  className="w-full h-12 pl-11 pr-4 text-sm rounded-xl glass text-primary-800 placeholder:text-neutral-500 focus:border-primary-400/50 outline-none transition-all"
                 />
               </div>
               <button
                 onClick={() => setShowFilters(!showFilters)}
                 className={`flex items-center gap-2 h-12 px-5 rounded-xl text-sm font-medium transition-all ${
-                  showFilters ? 'glass text-primary-400 border-primary-400/30' : 'glass text-neutral-300 hover:text-white'
+                  showFilters ? 'glass text-primary-400 border-primary-400/30' : 'glass text-primary-700 hover:text-primary-800'
                 }`}
               >
                 <Filter className="w-4 h-4" />
@@ -105,7 +105,7 @@ export function ServicesClient({ services, categories, freelances }: ServicesCli
             <div className="sticky top-[110px] space-y-6">
               {/* Categories */}
               <div className="glass rounded-2xl p-6">
-                <h3 className="text-sm font-bold text-white mb-5 flex items-center gap-2">
+                <h3 className="text-sm font-bold text-primary-800 mb-5 flex items-center gap-2">
                   <Sparkles className="w-4 h-4 text-primary-400" />
                   {t('services.categories')}
                 </h3>
@@ -113,7 +113,7 @@ export function ServicesClient({ services, categories, freelances }: ServicesCli
                   <button
                     onClick={() => setSelectedCategory('all')}
                     className={`w-full text-left text-sm px-4 py-2.5 rounded-xl transition-all ${
-                      selectedCategory === 'all' ? 'glass text-primary-400 font-semibold' : 'text-neutral-400 hover:bg-neutral-800/50 hover:text-white'
+                      selectedCategory === 'all' ? 'glass text-primary-400 font-semibold' : 'text-neutral-400 hover:bg-primary-50 hover:text-primary-800'
                     }`}
                   >
                     {t('services.allCategories')}
@@ -123,7 +123,7 @@ export function ServicesClient({ services, categories, freelances }: ServicesCli
                       key={cat.slug}
                       onClick={() => setSelectedCategory(cat.slug)}
                       className={`w-full text-left text-sm px-4 py-2.5 rounded-xl transition-all flex items-center justify-between ${
-                        selectedCategory === cat.slug ? 'glass text-primary-400 font-semibold' : 'text-neutral-400 hover:bg-neutral-800/50 hover:text-white'
+                        selectedCategory === cat.slug ? 'glass text-primary-400 font-semibold' : 'text-neutral-400 hover:bg-primary-50 hover:text-primary-800'
                       }`}
                     >
                       <span className="flex items-center gap-2">
@@ -138,13 +138,13 @@ export function ServicesClient({ services, categories, freelances }: ServicesCli
 
               {/* Price range */}
               <div className="glass rounded-2xl p-6">
-                <h3 className="text-sm font-bold text-white mb-5">{t('services.maxBudget')}</h3>
+                <h3 className="text-sm font-bold text-primary-800 mb-5">{t('services.maxBudget')}</h3>
                 <div className="flex items-center gap-2">
                   <input
                     type="number"
                     value={priceRange[0]}
                     onChange={(e) => setPriceRange([+e.target.value, priceRange[1]])}
-                    className="w-full h-10 px-3 text-sm rounded-xl glass text-white outline-none focus:border-primary-400/50"
+                    className="w-full h-10 px-3 text-sm rounded-xl glass text-primary-800 outline-none focus:border-primary-400/50"
                     placeholder="Min"
                   />
                   <span className="text-neutral-600">—</span>
@@ -152,7 +152,7 @@ export function ServicesClient({ services, categories, freelances }: ServicesCli
                     type="number"
                     value={priceRange[1]}
                     onChange={(e) => setPriceRange([priceRange[0], +e.target.value])}
-                    className="w-full h-10 px-3 text-sm rounded-xl glass text-white outline-none focus:border-primary-400/50"
+                    className="w-full h-10 px-3 text-sm rounded-xl glass text-primary-800 outline-none focus:border-primary-400/50"
                     placeholder="Max"
                   />
                 </div>
@@ -162,7 +162,7 @@ export function ServicesClient({ services, categories, freelances }: ServicesCli
               {/* Reset */}
               <button
                 onClick={() => { setSelectedCategory('all'); setSearch(''); setPriceRange([0, 500]); setSort('popular'); }}
-                className="w-full flex items-center justify-center gap-2 h-11 text-sm text-neutral-400 hover:text-white glass rounded-xl hover:text-primary-400 transition-all"
+                className="w-full flex items-center justify-center gap-2 h-11 text-sm text-neutral-400 hover:text-primary-800 glass rounded-xl hover:text-primary-400 transition-all"
               >
                 <X className="w-4 h-4" />
                 {t('services.resetFilters')}
@@ -182,7 +182,7 @@ export function ServicesClient({ services, categories, freelances }: ServicesCli
                     key={opt.value}
                     onClick={() => setSort(opt.value)}
                     className={`text-sm px-4 py-2 rounded-xl whitespace-nowrap transition-all flex items-center gap-2 ${
-                      sort === opt.value ? 'glass text-primary-400 font-semibold' : 'text-neutral-400 glass hover:text-white'
+                      sort === opt.value ? 'glass text-primary-400 font-semibold' : 'text-neutral-400 glass hover:text-primary-800'
                     }`}
                   >
                     {Icon && <Icon className="w-3.5 h-3.5" />}
@@ -206,7 +206,7 @@ export function ServicesClient({ services, categories, freelances }: ServicesCli
               </div>
             ) : (
               <div className="text-center py-20 glass rounded-3xl">
-                <div className="w-16 h-16 rounded-2xl bg-neutral-800 flex items-center justify-center mx-auto mb-4">
+                <div className="w-16 h-16 rounded-2xl bg-primary-50 flex items-center justify-center mx-auto mb-4">
                   <Search className="w-8 h-8 text-neutral-600" />
                 </div>
                 <p className="text-neutral-400 text-lg font-semibold mb-2">{t('services.noService')}</p>

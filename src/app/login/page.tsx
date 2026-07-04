@@ -47,7 +47,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-[calc(100vh-108px)] flex items-center justify-center bg-dark noise-bg relative overflow-hidden py-12 px-4">
+    <div className="min-h-[calc(100vh-108px)] flex items-center justify-center bg-[#edf6fd] noise-bg relative overflow-hidden py-12 px-4">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(234,179,8,0.08),transparent_50%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(234,179,8,0.05),transparent_50%)]" />
       <div className="absolute top-20 left-20 w-80 h-80 bg-primary-400/5 rounded-full blur-3xl animate-float" />
@@ -57,16 +57,16 @@ export default function LoginPage() {
         <div className="text-center mb-10">
           <Link href="/" className="inline-flex items-center gap-3 group mb-6">
             <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary-400 to-primary-600 flex items-center justify-center group-hover:scale-110 transition-transform">
-              <span className="text-2xl font-black text-black">T</span>
+              <span className="text-2xl font-black text-white">T</span>
             </div>
             <div>
-              <span className="text-2xl font-black text-white tracking-tight">
+              <span className="text-2xl font-black text-primary-800 tracking-tight">
                 THÈSE<span className="text-gradient">PRO</span>
               </span>
               <span className="block text-[10px] text-neutral-500 -mt-1 tracking-wider">{t('header.academicExperts')}</span>
             </div>
           </Link>
-          <h1 className="text-3xl font-black text-white mb-2">{t('login.welcomeBack')}</h1>
+          <h1 className="text-3xl font-black text-primary-800 mb-2">{t('login.welcomeBack')}</h1>
           <p className="text-neutral-500">{t('login.accessSpace')}</p>
         </div>
 
@@ -80,18 +80,18 @@ export default function LoginPage() {
 
           <form className="space-y-5" onSubmit={handleSubmit}>
             <div>
-              <label className="block text-sm font-semibold text-neutral-300 mb-2">{t('login.email')}</label>
+              <label className="block text-sm font-semibold text-primary-700 mb-2">{t('login.email')}</label>
               <input
                 type="email"
                 placeholder="votre@email.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="w-full h-12 px-4 text-sm rounded-xl glass text-white placeholder:text-neutral-600 focus:border-primary-400/50 outline-none transition-all"
+                className="w-full h-12 px-4 text-sm rounded-xl glass text-primary-800 placeholder:text-neutral-600 focus:border-primary-400/50 outline-none transition-all"
               />
             </div>
             <div>
-              <label className="block text-sm font-semibold text-neutral-300 mb-2">{t('login.password')}</label>
+              <label className="block text-sm font-semibold text-primary-700 mb-2">{t('login.password')}</label>
               <div className="relative">
                 <input
                   type={showPassword ? 'text' : 'password'}
@@ -99,7 +99,7 @@ export default function LoginPage() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
-                  className="w-full h-12 px-4 pr-12 text-sm rounded-xl glass text-white placeholder:text-neutral-600 focus:border-primary-400/50 outline-none transition-all"
+                  className="w-full h-12 px-4 pr-12 text-sm rounded-xl glass text-primary-800 placeholder:text-neutral-600 focus:border-primary-400/50 outline-none transition-all"
                 />
                 <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-4 top-1/2 -translate-y-1/2 text-neutral-500 hover:text-primary-400 transition-colors">
                   {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
@@ -108,7 +108,7 @@ export default function LoginPage() {
             </div>
             <div className="flex items-center justify-between pt-2">
               <label className="flex items-center gap-2 cursor-pointer">
-                <input type="checkbox" className="w-4 h-4 rounded border-neutral-600 bg-neutral-800 text-primary-400 focus:ring-primary-500" />
+                <input type="checkbox" className="w-4 h-4 rounded border-neutral-600 bg-primary-50 text-primary-400 focus:ring-primary-500" />
                 <span className="text-sm text-neutral-400">{t('login.remember')}</span>
               </label>
               <Link href="#" className="text-sm text-primary-400 hover:text-primary-300 font-semibold transition-colors">{t('login.forgotPassword')}</Link>
@@ -116,7 +116,7 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full h-12 bg-gradient-to-r from-primary-400 to-primary-500 hover:from-primary-500 hover:to-primary-600 text-black font-bold text-sm rounded-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-primary-400/20 glow-sm flex items-center justify-center gap-2 group"
+              className="w-full h-12 bg-gradient-to-r from-primary-400 to-primary-500 hover:from-primary-500 hover:to-primary-600 text-white font-bold text-sm rounded-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-primary-400/20 glow-sm flex items-center justify-center gap-2 group"
             >
               {loading ? t('login.submitting') : (
                 <>

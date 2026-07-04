@@ -7,7 +7,7 @@ import { useTranslation } from '@/lib/i18n/LanguageContext';
 export default function NotFound() {
   const { t } = useTranslation();
   return (
-    <div className="min-h-[calc(100vh-108px)] bg-dark noise-bg flex items-center justify-center relative overflow-hidden">
+    <div className="min-h-[calc(100vh-108px)] bg-[#edf6fd] noise-bg flex items-center justify-center relative overflow-hidden">
       {/* Background gradients */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(234,179,8,0.08),transparent_50%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(234,179,8,0.05),transparent_50%)]" />
@@ -26,7 +26,7 @@ export default function NotFound() {
         </div>
 
         {/* Message */}
-        <h2 className="text-3xl md:text-4xl font-black text-white mb-4">
+        <h2 className="text-3xl md:text-4xl font-black text-primary-800 mb-4">
           {t('notFound.title')}
         </h2>
         <p className="text-lg text-neutral-400 mb-10 max-w-md mx-auto">
@@ -37,7 +37,7 @@ export default function NotFound() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <Link
             href="/"
-            className="px-8 py-3 bg-gradient-to-r from-primary-400 to-primary-500 hover:from-primary-500 hover:to-primary-600 text-black font-bold text-sm rounded-xl transition-all shadow-lg shadow-primary-400/20 glow-sm flex items-center gap-2 group"
+            className="px-8 py-3 bg-gradient-to-r from-primary-400 to-primary-500 hover:from-primary-500 hover:to-primary-600 text-white font-bold text-sm rounded-xl transition-all shadow-lg shadow-primary-400/20 glow-sm flex items-center gap-2 group"
           >
             <Home className="w-4 h-4" />
             {t('notFound.backHome')}
@@ -45,7 +45,7 @@ export default function NotFound() {
           </Link>
           <Link
             href="/services"
-            className="px-8 py-3 glass rounded-xl text-white font-bold text-sm hover:bg-white/10 transition-all flex items-center gap-2 group"
+            className="px-8 py-3 glass rounded-xl text-primary-800 font-bold text-sm hover:bg-primary-50 transition-all flex items-center gap-2 group"
           >
             <Search className="w-4 h-4" />
             {t('notFound.exploreServices')}

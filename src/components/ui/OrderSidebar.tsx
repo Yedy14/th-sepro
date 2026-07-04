@@ -65,7 +65,7 @@ export function OrderSidebar({ tiers, startingPrice, serviceSlug }: OrderSidebar
             className={`block cursor-pointer rounded-2xl border-2 p-5 transition-all ${
               selectedTier === tier.key
                 ? 'border-primary-400 bg-primary-400/10 glow-sm'
-                : 'glass hover:bg-white/10'
+                : 'glass hover:bg-primary-50'
             }`}
           >
             <div className="flex items-start gap-3">
@@ -78,7 +78,7 @@ export function OrderSidebar({ tiers, startingPrice, serviceSlug }: OrderSidebar
                 className="mt-1 accent-yellow-500"
               />
               <div className="flex-1">
-                <span className="text-sm font-bold text-white">{tier.label}</span>
+                <span className="text-sm font-bold text-primary-800">{tier.label}</span>
                 <p className="text-xs text-neutral-400 mt-1">{tier.description}</p>
                 <p className="text-xs text-neutral-500 mt-1">{tier.deliveryDays} {t('orderSidebar.deliveryDays')}</p>
               </div>
@@ -90,7 +90,7 @@ export function OrderSidebar({ tiers, startingPrice, serviceSlug }: OrderSidebar
       {/* Order button */}
       <button
         onClick={handleOrder}
-        className="w-full h-12 bg-gradient-to-r from-primary-400 to-primary-500 hover:from-primary-500 hover:to-primary-600 text-black font-bold text-sm rounded-xl transition-all shadow-lg shadow-primary-400/20 glow-sm flex items-center justify-center gap-2 group mb-3"
+        className="w-full h-12 bg-gradient-to-r from-primary-400 to-primary-500 hover:from-primary-500 hover:to-primary-600 text-white font-bold text-sm rounded-xl transition-all shadow-lg shadow-primary-400/20 glow-sm flex items-center justify-center gap-2 group mb-3"
       >
         <Sparkles className="w-4 h-4" />
         {t('orderSidebar.order')}
@@ -110,7 +110,7 @@ export function OrderSidebar({ tiers, startingPrice, serviceSlug }: OrderSidebar
       <p className="text-center text-[10px] text-neutral-600 mb-6">{t('orderSidebar.tls')}</p>
 
       {/* Contact button */}
-      <button className="w-full h-12 glass rounded-xl text-white font-semibold text-sm hover:bg-white/10 transition-all flex items-center justify-center gap-2 group">
+      <button className="w-full h-12 glass rounded-xl text-primary-800 font-semibold text-sm hover:bg-primary-50 transition-all flex items-center justify-center gap-2 group">
         <MessageCircle className="w-4 h-4 group-hover:text-primary-400 transition-colors" />
         {t('orderSidebar.contactSeller')}
       </button>

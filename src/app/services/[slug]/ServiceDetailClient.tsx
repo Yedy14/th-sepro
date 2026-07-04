@@ -70,16 +70,16 @@ export default function ServiceDetailClient({ service, freelance, relatedService
   const { t } = useTranslation();
 
   return (
-    <div className="min-h-screen bg-dark noise-bg">
+    <div className="min-h-screen bg-[#edf6fd] noise-bg">
       {/* Breadcrumb */}
-      <div className="border-b border-white/5">
+      <div className="border-b border-primary-100">
         <div className="container-responsive py-4">
           <nav className="flex items-center gap-2 text-sm text-neutral-500 animate-fade-in">
             <Link href="/" className="hover:text-primary-400 transition-colors">{t('common.home')}</Link>
             <ChevronRight className="w-3 h-3" />
             <Link href="/services" className="hover:text-primary-400 transition-colors">{t('services.breadcrumb')}</Link>
             <ChevronRight className="w-3 h-3" />
-            <span className="text-neutral-300">{service.title}</span>
+            <span className="text-primary-700">{service.title}</span>
           </nav>
         </div>
       </div>
@@ -101,7 +101,7 @@ export default function ServiceDetailClient({ service, freelance, relatedService
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
               <div className="absolute bottom-6 left-6 right-6">
                 <div className="flex items-center gap-3 mb-3">
-                  <span className="glass rounded-full px-4 py-1.5 text-xs font-semibold text-white">{service.category}</span>
+                  <span className="glass rounded-full px-4 py-1.5 text-xs font-semibold text-primary-800">{service.category}</span>
                   {freelance.verified && (
                     <span className="glass rounded-full px-4 py-1.5 text-xs font-semibold text-primary-400 flex items-center gap-1">
                       <CheckCircle className="w-3 h-3" /> {t('serviceDetail.verified')}
@@ -113,11 +113,11 @@ export default function ServiceDetailClient({ service, freelance, relatedService
 
             {/* Title & rating */}
             <div className="animate-fade-in">
-              <h1 className="text-3xl md:text-4xl font-black text-white mb-4">{service.title}</h1>
+              <h1 className="text-3xl md:text-4xl font-black text-primary-800 mb-4">{service.title}</h1>
               <div className="flex flex-wrap items-center gap-4 text-sm">
                 <div className="flex items-center gap-1">
                   <Star className="w-5 h-5 fill-primary-400 text-primary-400" />
-                  <span className="text-white font-bold">{service.rating.toFixed(1)}</span>
+                  <span className="text-primary-800 font-bold">{service.rating.toFixed(1)}</span>
                   <span className="text-neutral-500">({service.reviewCount} {t('serviceDetail.reviews')})</span>
                 </div>
                 <span className="text-neutral-600">|</span>
@@ -129,17 +129,17 @@ export default function ServiceDetailClient({ service, freelance, relatedService
 
             {/* Description */}
             <div className="glass rounded-2xl p-8 animate-fade-in">
-              <h2 className="text-xl font-bold text-white mb-4">{t('serviceDetail.description')}</h2>
+              <h2 className="text-xl font-bold text-primary-800 mb-4">{t('serviceDetail.description')}</h2>
               <p className="text-neutral-400 leading-relaxed whitespace-pre-line">{service.description}</p>
             </div>
 
             {/* Tags */}
             {service.tags && service.tags.length > 0 && (
               <div className="glass rounded-2xl p-6 animate-fade-in">
-                <h2 className="text-xl font-bold text-white mb-4">{t('serviceDetail.skills')}</h2>
+                <h2 className="text-xl font-bold text-primary-800 mb-4">{t('serviceDetail.skills')}</h2>
                 <div className="flex flex-wrap gap-2">
                   {service.tags.map((tag) => (
-                    <span key={tag} className="text-xs text-neutral-300 glass px-4 py-2 rounded-full">{tag}</span>
+                    <span key={tag} className="text-xs text-primary-700 glass px-4 py-2 rounded-full">{tag}</span>
                   ))}
                 </div>
               </div>
@@ -160,7 +160,7 @@ export default function ServiceDetailClient({ service, freelance, relatedService
                 </div>
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-1">
-                    <Link href={`/freelances/${freelance.slug}`} className="text-lg font-bold text-white hover:text-primary-400 transition-colors">{freelance.name}</Link>
+                    <Link href={`/freelances/${freelance.slug}`} className="text-lg font-bold text-primary-800 hover:text-primary-400 transition-colors">{freelance.name}</Link>
                     {freelance.verified && <CheckCircle className="w-4 h-4 text-primary-400" />}
                   </div>
                   <p className="text-sm text-neutral-400 mb-2">{freelance.title}</p>
@@ -176,7 +176,7 @@ export default function ServiceDetailClient({ service, freelance, relatedService
             {/* Related services */}
             {relatedServices.length > 0 && (
               <div className="animate-fade-in">
-                <h2 className="text-xl font-bold text-white mb-4">{t('serviceDetail.similarServices')}</h2>
+                <h2 className="text-xl font-bold text-primary-800 mb-4">{t('serviceDetail.similarServices')}</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
                   {relatedServices.map((s) => (
                     <ServiceCard key={s.id} service={s as any} freelance={freelance as any} />

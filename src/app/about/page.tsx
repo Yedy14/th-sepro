@@ -7,7 +7,7 @@ export default function AboutPage() {
   const { t } = useTranslation();
 
   return (
-    <div className="min-h-screen bg-dark noise-bg">
+    <div className="min-h-screen bg-[#edf6fd] noise-bg">
       {/* Hero */}
       <section className="relative py-24 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(234,179,8,0.08),transparent_50%)]" />
@@ -17,9 +17,9 @@ export default function AboutPage() {
         <div className="container-responsive text-center relative z-10 animate-fade-in">
           <div className="inline-flex items-center gap-2 glass rounded-full px-4 py-2 mb-6">
             <Sparkles className="w-4 h-4 text-primary-400" />
-            <span className="text-xs font-semibold text-neutral-300">{t('about.badge')}</span>
+            <span className="text-xs font-semibold text-primary-700">{t('about.badge')}</span>
           </div>
-          <h1 className="text-5xl md:text-6xl font-black text-white mb-6">
+          <h1 className="text-5xl md:text-6xl font-black text-primary-800 mb-6">
             {t('about.mission')} <span className="text-gradient">...</span>
           </h1>
           <p className="text-lg text-neutral-400 max-w-2xl mx-auto leading-relaxed">
@@ -41,7 +41,7 @@ export default function AboutPage() {
                 <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-primary-400/20 to-primary-600/20 mb-6">
                   <Icon className="w-8 h-8 text-primary-400" />
                 </div>
-                <h2 className="text-xl font-bold text-white mb-3">{title}</h2>
+                <h2 className="text-xl font-bold text-primary-800 mb-3">{title}</h2>
                 <p className="text-sm text-neutral-400 leading-relaxed">{desc}</p>
               </div>
             ))}
@@ -75,9 +75,9 @@ export default function AboutPage() {
         <div className="container-responsive text-center">
           <div className="glass rounded-3xl p-12 max-w-3xl mx-auto animate-fade-in">
             <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-primary-400 to-primary-600 mb-6">
-              <Users className="w-8 h-8 text-black" />
+              <Users className="w-8 h-8 text-white" />
             </div>
-            <h2 className="text-3xl font-black text-white mb-4">{t('about.passionateTeam')}</h2>
+            <h2 className="text-3xl font-black text-primary-800 mb-4">{t('about.passionateTeam')}</h2>
             <p className="text-neutral-400 leading-relaxed mb-6">
               {t('about.teamDesc')}
             </p>

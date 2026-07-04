@@ -31,21 +31,21 @@ export default function OrdersPageClient({ orders }: OrdersPageClientProps) {
   };
 
   return (
-    <div className="min-h-screen bg-dark noise-bg">
+    <div className="min-h-screen bg-[#edf6fd] noise-bg">
       <div className="container-responsive py-10">
         <div className="mb-8 animate-fade-in">
           <div className="inline-flex items-center gap-2 glass rounded-full px-4 py-2 mb-4">
             <ShoppingBag className="w-4 h-4 text-primary-400" />
-            <span className="text-xs font-semibold text-neutral-300">{t('orders.badge')}</span>
+            <span className="text-xs font-semibold text-primary-700">{t('orders.badge')}</span>
           </div>
-          <h1 className="text-4xl font-black text-white mb-2">{t('orders.history')}</h1>
+          <h1 className="text-4xl font-black text-primary-800 mb-2">{t('orders.history')}</h1>
           <p className="text-neutral-400">{t('orders.historyDesc')}</p>
         </div>
 
         {orders.length > 0 ? (
           <div className="space-y-3 animate-fade-in">
             {orders.map((order, i) => {
-              const config = statusConfig[order.status] || { labelKey: '', icon: Clock, color: 'text-neutral-400', bg: 'bg-neutral-800' };
+              const config = statusConfig[order.status] || { labelKey: '', icon: Clock, color: 'text-neutral-400', bg: 'bg-primary-50' };
               const Icon = config.icon;
               return (
                 <Link
@@ -60,7 +60,7 @@ export default function OrdersPageClient({ orders }: OrdersPageClientProps) {
                         <ShoppingBag className="w-6 h-6 text-primary-400" />
                       </div>
                       <div className="flex-1">
-                        <p className="text-base font-bold text-white group-hover:text-primary-400 transition-colors mb-1">{order.serviceTitle}</p>
+                        <p className="text-base font-bold text-primary-800 group-hover:text-primary-400 transition-colors mb-1">{order.serviceTitle}</p>
                         <div className="flex items-center gap-3 text-xs text-neutral-500">
                           <span className="font-mono">{order.orderNumber}</span>
                           <span>•</span>
@@ -89,7 +89,7 @@ export default function OrdersPageClient({ orders }: OrdersPageClientProps) {
             <p className="text-xl text-neutral-400 mb-4">{t('orders.noOrders')}</p>
             <Link
               href="/services"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-primary-400 to-primary-500 hover:from-primary-500 hover:to-primary-600 text-black font-bold text-sm rounded-xl transition-all shadow-lg shadow-primary-400/20 glow-sm group"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-primary-400 to-primary-500 hover:from-primary-500 hover:to-primary-600 text-white font-bold text-sm rounded-xl transition-all shadow-lg shadow-primary-400/20 glow-sm group"
             >
               <ShoppingBag className="w-4 h-4" />
               {t('orders.discoverServices')}

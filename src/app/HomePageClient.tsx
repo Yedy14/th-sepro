@@ -29,7 +29,7 @@ export default function HomePageClient({ services, freelances, categories, testi
   const { t } = useTranslation();
 
   return (
-    <div className="bg-dark">
+    <div className="bg-[#edf6fd]">
       {/* HERO */}
       <section className="relative overflow-hidden min-h-[720px] flex items-center">
         <div className="absolute inset-0 bg-gradient-to-br from-black via-neutral-950 to-dark" />
@@ -59,7 +59,7 @@ export default function HomePageClient({ services, freelances, categories, testi
                 </div>
               </div>
 
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[1.05] mb-8 tracking-tight">
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-primary-800 leading-[1.05] mb-8 tracking-tight">
                 {t('home.heroTitle1')}{' '}
                 <span className="relative inline-block">
                   <span className="relative z-10 text-gradient">{t('home.heroTitle2')}</span>
@@ -72,12 +72,12 @@ export default function HomePageClient({ services, freelances, categories, testi
               </p>
 
               <div className="flex flex-col sm:flex-row items-start gap-4 mb-12">
-                <Link href="/services" className="group h-14 px-8 bg-gradient-to-r from-primary-400 to-primary-500 hover:from-primary-500 hover:to-primary-600 text-black font-bold text-base rounded-xl transition-all flex items-center gap-3 shadow-lg shadow-primary-400/30 glow-sm">
+                <Link href="/services" className="group h-14 px-8 bg-gradient-to-r from-primary-400 to-primary-500 hover:from-primary-500 hover:to-primary-600 text-white font-bold text-base rounded-xl transition-all flex items-center gap-3 shadow-lg shadow-primary-400/30 glow-sm">
                   <Sparkles className="w-5 h-5" /> 
                   {t('home.findExpert')}
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </Link>
-                <Link href="/freelances" className="h-14 px-8 glass text-white font-bold text-base rounded-xl hover:bg-white/10 transition-all flex items-center gap-3">
+                <Link href="/freelances" className="h-14 px-8 glass text-primary-800 font-bold text-base rounded-xl hover:bg-primary-50 transition-all flex items-center gap-3">
                   {t('home.discoverFreelances')}
                 </Link>
               </div>
@@ -128,7 +128,7 @@ export default function HomePageClient({ services, freelances, categories, testi
                             <Star key={i} className="w-4 h-4 fill-primary-400 text-primary-400" />
                           ))}
                         </div>
-                        <p className="text-xs text-white/80">{t('home.drKouassi')}</p>
+                        <p className="text-xs text-primary-800/80">{t('home.drKouassi')}</p>
                       </div>
                     </div>
                   </div>
@@ -140,7 +140,7 @@ export default function HomePageClient({ services, freelances, categories, testi
       </section>
 
       {/* Universities */}
-      <section className="border-y border-white/5 glass-dark py-10">
+      <section className="border-y border-primary-100 glass-dark py-10">
         <div className="container-responsive">
           <p className="text-center text-xs text-neutral-600 uppercase tracking-[0.3em] mb-8">{t('home.studentsFrom')}</p>
           <div className="flex items-center justify-center gap-12 md:gap-20 flex-wrap">
@@ -155,14 +155,14 @@ export default function HomePageClient({ services, freelances, categories, testi
       </section>
 
       {/* How it works */}
-      <section className="py-24 bg-dark relative">
+      <section className="py-24 bg-[#edf6fd] relative">
         <div className="container-responsive relative z-10">
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 glass rounded-full px-4 py-2 mb-4">
               <Sparkles className="w-4 h-4 text-primary-400" />
-              <span className="text-sm text-neutral-300">{t('home.simpleAndFast')}</span>
+              <span className="text-sm text-primary-700">{t('home.simpleAndFast')}</span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-black text-white mb-4">{t('home.howItWorks')}</h2>
+            <h2 className="text-4xl md:text-5xl font-black text-primary-800 mb-4">{t('home.howItWorks')}</h2>
             <p className="text-neutral-500 max-w-lg mx-auto text-lg">{t('home.howDesc')}</p>
           </div>
 
@@ -181,7 +181,7 @@ export default function HomePageClient({ services, freelances, categories, testi
                       <Icon className="w-7 h-7 text-primary-400" />
                     </div>
                   </div>
-                  <h3 className="text-xl font-bold text-white mb-3">{title}</h3>
+                  <h3 className="text-xl font-bold text-primary-800 mb-3">{title}</h3>
                   <p className="text-sm text-neutral-400 leading-relaxed">{desc}</p>
                 </div>
               </div>
@@ -218,15 +218,15 @@ export default function HomePageClient({ services, freelances, categories, testi
       </section>
 
       {/* Popular services */}
-      <section className="py-24 bg-dark relative">
+      <section className="py-24 bg-[#edf6fd] relative">
         <div className="container-responsive relative z-10">
           <div className="flex items-end justify-between mb-12">
             <div>
               <div className="inline-flex items-center gap-2 glass rounded-full px-4 py-2 mb-4">
                 <Zap className="w-4 h-4 text-primary-400" />
-                <span className="text-sm text-neutral-300">{t('home.mostRequested')}</span>
+                <span className="text-sm text-primary-700">{t('home.mostRequested')}</span>
               </div>
-              <h2 className="text-4xl md:text-5xl font-black text-white mb-3">{t('home.popularServices')}</h2>
+              <h2 className="text-4xl md:text-5xl font-black text-primary-800 mb-3">{t('home.popularServices')}</h2>
               <p className="text-neutral-500 text-lg">{t('home.popularDesc')}</p>
             </div>
             <Link href="/services" className="hidden md:flex items-center gap-2 text-sm text-primary-400 hover:text-primary-300 font-semibold group">
@@ -253,9 +253,9 @@ export default function HomePageClient({ services, freelances, categories, testi
             <div>
               <div className="inline-flex items-center gap-2 glass rounded-full px-4 py-2 mb-4">
                 <Award className="w-4 h-4 text-primary-400" />
-                <span className="text-sm text-neutral-300">{t('home.topPerformers')}</span>
+                <span className="text-sm text-primary-700">{t('home.topPerformers')}</span>
               </div>
-              <h2 className="text-4xl md:text-5xl font-black text-white mb-3">{t('home.ourTalents')}</h2>
+              <h2 className="text-4xl md:text-5xl font-black text-primary-800 mb-3">{t('home.ourTalents')}</h2>
               <p className="text-neutral-500 text-lg">{t('home.talentsDesc')}</p>
             </div>
             <Link href="/freelances" className="hidden md:flex items-center gap-2 text-sm text-primary-400 hover:text-primary-300 font-semibold group">
@@ -273,15 +273,15 @@ export default function HomePageClient({ services, freelances, categories, testi
       </section>
 
       {/* Why choose us */}
-      <section className="py-24 bg-dark relative overflow-hidden">
+      <section className="py-24 bg-[#edf6fd] relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(234,179,8,0.05),transparent_60%)]" />
         <div className="container-responsive relative z-10">
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 glass rounded-full px-4 py-2 mb-4">
               <Heart className="w-4 h-4 text-primary-400 fill-primary-400" />
-              <span className="text-sm text-neutral-300">{t('home.whyChooseUs')}</span>
+              <span className="text-sm text-primary-700">{t('home.whyChooseUs')}</span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-black text-white mb-4">{t('home.whatMakesUsDifferent')}</h2>
+            <h2 className="text-4xl md:text-5xl font-black text-primary-800 mb-4">{t('home.whatMakesUsDifferent')}</h2>
             <p className="text-neutral-500 max-w-lg mx-auto text-lg">{t('home.whyDesc')}</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
@@ -296,7 +296,7 @@ export default function HomePageClient({ services, freelances, categories, testi
                   <div className="inline-flex items-center justify-center w-20 h-20 rounded-3xl bg-primary-400/10 mb-6 group-hover:scale-110 transition-transform">
                     <Icon className="w-10 h-10 text-primary-400" />
                   </div>
-                  <h3 className="text-xl font-bold text-white mb-4">{title}</h3>
+                  <h3 className="text-xl font-bold text-primary-800 mb-4">{title}</h3>
                   <p className="text-sm text-neutral-400 leading-relaxed">{desc}</p>
                 </div>
               </div>
@@ -311,9 +311,9 @@ export default function HomePageClient({ services, freelances, categories, testi
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 glass rounded-full px-4 py-2 mb-4">
               <MessageCircle className="w-4 h-4 text-primary-400" />
-              <span className="text-sm text-neutral-300">{t('home.testimonials')}</span>
+              <span className="text-sm text-primary-700">{t('home.testimonials')}</span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-black text-white mb-4">{t('home.theySucceeded')}</h2>
+            <h2 className="text-4xl md:text-5xl font-black text-primary-800 mb-4">{t('home.theySucceeded')}</h2>
             <p className="text-neutral-500 max-w-lg mx-auto text-lg">{t('home.testimonialsDesc')}</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
@@ -326,13 +326,13 @@ export default function HomePageClient({ services, freelances, categories, testi
                       <Star key={i} className={`w-5 h-5 ${i < testimonial.rating ? 'fill-primary-400 text-primary-400' : 'text-neutral-700'}`} />
                     ))}
                   </div>
-                  <p className="text-sm text-neutral-300 leading-relaxed mb-8">&ldquo;{testimonial.text}&rdquo;</p>
-                  <div className="flex items-center gap-4 pt-5 border-t border-white/5">
-                    <div className="w-12 h-12 rounded-full overflow-hidden bg-neutral-700 ring-2 ring-primary-400/20">
+                  <p className="text-sm text-primary-700 leading-relaxed mb-8">&ldquo;{testimonial.text}&rdquo;</p>
+                  <div className="flex items-center gap-4 pt-5 border-t border-primary-100">
+                    <div className="w-12 h-12 rounded-full overflow-hidden bg-primary-100 ring-2 ring-primary-400/20">
                       <Image src={testimonialPhotos[idx] || getAvatarUrl(testimonial.author)} alt={testimonial.author} width={48} height={48} className="w-full h-full object-cover" />
                     </div>
                     <div>
-                      <p className="text-sm font-bold text-white">{testimonial.author}</p>
+                      <p className="text-sm font-bold text-primary-800">{testimonial.author}</p>
                       <p className="text-xs text-neutral-500">{testimonial.role}</p>
                     </div>
                   </div>
@@ -355,19 +355,19 @@ export default function HomePageClient({ services, freelances, categories, testi
             <Heart className="w-4 h-4 text-primary-400 fill-primary-400" />
             <span className="text-sm text-primary-400 font-semibold">{t('home.join10k')}</span>
           </div>
-          <h2 className="text-5xl md:text-6xl font-black text-white mb-8 max-w-3xl mx-auto leading-tight">
+          <h2 className="text-5xl md:text-6xl font-black text-primary-800 mb-8 max-w-3xl mx-auto leading-tight">
             {t('home.notAlone')} <span className="text-gradient">thèse</span>
           </h2>
           <p className="text-neutral-400 mb-12 max-w-2xl mx-auto text-xl leading-relaxed">
             {t('home.notAloneDesc')}
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link href="/services" className="group h-16 px-12 bg-gradient-to-r from-primary-400 to-primary-500 hover:from-primary-500 hover:to-primary-600 text-black font-bold text-base rounded-xl transition-all flex items-center gap-3 shadow-lg shadow-primary-400/30 glow-md">
+            <Link href="/services" className="group h-16 px-12 bg-gradient-to-r from-primary-400 to-primary-500 hover:from-primary-500 hover:to-primary-600 text-white font-bold text-base rounded-xl transition-all flex items-center gap-3 shadow-lg shadow-primary-400/30 glow-md">
               <Sparkles className="w-5 h-5" /> 
               {t('home.startNow')}
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
-            <Link href="/register" className="h-16 px-12 glass text-white font-bold text-base rounded-xl hover:bg-white/10 transition-all flex items-center gap-3">
+            <Link href="/register" className="h-16 px-12 glass text-primary-800 font-bold text-base rounded-xl hover:bg-primary-50 transition-all flex items-center gap-3">
               {t('home.becomeFreelance')}
             </Link>
           </div>

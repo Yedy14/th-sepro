@@ -46,15 +46,15 @@ export default function FreelanceSettingsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-dark noise-bg">
+    <div className="min-h-screen bg-[#edf6fd] noise-bg">
       <div className="container-responsive py-10 max-w-2xl">
         {/* Header */}
         <div className="mb-10 animate-fade-in">
           <div className="inline-flex items-center gap-2 glass rounded-full px-4 py-2 mb-4">
             <Briefcase className="w-4 h-4 text-primary-400" />
-            <span className="text-xs font-semibold text-neutral-300">{t('freelanceSettings.badge')}</span>
+            <span className="text-xs font-semibold text-primary-700">{t('freelanceSettings.badge')}</span>
           </div>
-          <h1 className="text-4xl font-black text-white mb-2">{t('freelanceSettings.title')}</h1>
+          <h1 className="text-4xl font-black text-primary-800 mb-2">{t('freelanceSettings.title')}</h1>
           <p className="text-neutral-400">{t('freelanceSettings.subtitle')}</p>
         </div>
 
@@ -74,41 +74,41 @@ export default function FreelanceSettingsPage() {
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="glass rounded-3xl p-8 animate-fade-in">
-            <h2 className="text-lg font-bold text-white mb-6 flex items-center gap-2">
+            <h2 className="text-lg font-bold text-primary-800 mb-6 flex items-center gap-2">
               <Briefcase className="w-5 h-5 text-primary-400" />
               {t('freelanceSettings.professionalInfo')}
             </h2>
             <div className="space-y-4">
               <div>
-                <label className="block text-sm font-semibold text-neutral-300 mb-2">{t('freelanceSettings.professionalTitle')}</label>
-                <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} placeholder={t('freelanceSettings.professionalTitlePlaceholder')} className="w-full h-12 px-4 text-sm rounded-xl glass text-white placeholder:text-neutral-600 focus:border-primary-400/50 outline-none transition-all" />
+                <label className="block text-sm font-semibold text-primary-700 mb-2">{t('freelanceSettings.professionalTitle')}</label>
+                <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} placeholder={t('freelanceSettings.professionalTitlePlaceholder')} className="w-full h-12 px-4 text-sm rounded-xl glass text-primary-800 placeholder:text-neutral-600 focus:border-primary-400/50 outline-none transition-all" />
               </div>
               <div>
-                <label className="block text-sm font-semibold text-neutral-300 mb-2">{t('freelanceSettings.speciality')}</label>
-                <input type="text" value={speciality} onChange={(e) => setSpeciality(e.target.value)} className="w-full h-12 px-4 text-sm rounded-xl glass text-white placeholder:text-neutral-600 focus:border-primary-400/50 outline-none transition-all" />
+                <label className="block text-sm font-semibold text-primary-700 mb-2">{t('freelanceSettings.speciality')}</label>
+                <input type="text" value={speciality} onChange={(e) => setSpeciality(e.target.value)} className="w-full h-12 px-4 text-sm rounded-xl glass text-primary-800 placeholder:text-neutral-600 focus:border-primary-400/50 outline-none transition-all" />
               </div>
               <div>
-                <label className="block text-sm font-semibold text-neutral-300 mb-2">{t('freelanceSettings.bio')}</label>
-                <textarea value={bio} onChange={(e) => setBio(e.target.value)} rows={4} placeholder={t('freelanceSettings.bioPlaceholder')} className="w-full p-4 text-sm rounded-xl glass text-white placeholder:text-neutral-600 focus:border-primary-400/50 outline-none resize-none transition-all" />
+                <label className="block text-sm font-semibold text-primary-700 mb-2">{t('freelanceSettings.bio')}</label>
+                <textarea value={bio} onChange={(e) => setBio(e.target.value)} rows={4} placeholder={t('freelanceSettings.bioPlaceholder')} className="w-full p-4 text-sm rounded-xl glass text-primary-800 placeholder:text-neutral-600 focus:border-primary-400/50 outline-none resize-none transition-all" />
               </div>
               <div>
-                <label className="block text-sm font-semibold text-neutral-300 mb-2 flex items-center gap-2">
+                <label className="block text-sm font-semibold text-primary-700 mb-2 flex items-center gap-2">
                   <MapPin className="w-4 h-4 text-primary-400" />
                   {t('freelanceSettings.location')}
                 </label>
-                <input type="text" value={location} onChange={(e) => setLocation(e.target.value)} placeholder="Paris, France" className="w-full h-12 px-4 text-sm rounded-xl glass text-white placeholder:text-neutral-600 focus:border-primary-400/50 outline-none transition-all" />
+                <input type="text" value={location} onChange={(e) => setLocation(e.target.value)} placeholder="Paris, France" className="w-full h-12 px-4 text-sm rounded-xl glass text-primary-800 placeholder:text-neutral-600 focus:border-primary-400/50 outline-none transition-all" />
               </div>
               <div>
-                <label className="block text-sm font-semibold text-neutral-300 mb-2 flex items-center gap-2">
+                <label className="block text-sm font-semibold text-primary-700 mb-2 flex items-center gap-2">
                   <Tag className="w-4 h-4 text-primary-400" />
                   {t('freelanceSettings.skills')}
                 </label>
-                <input type="text" value={skillsText} onChange={(e) => setSkillsText(e.target.value)} placeholder={t('freelanceSettings.skillsPlaceholder')} className="w-full h-12 px-4 text-sm rounded-xl glass text-white placeholder:text-neutral-600 focus:border-primary-400/50 outline-none transition-all" />
+                <input type="text" value={skillsText} onChange={(e) => setSkillsText(e.target.value)} placeholder={t('freelanceSettings.skillsPlaceholder')} className="w-full h-12 px-4 text-sm rounded-xl glass text-primary-800 placeholder:text-neutral-600 focus:border-primary-400/50 outline-none transition-all" />
               </div>
             </div>
           </div>
 
-          <button type="submit" disabled={loading} className="px-8 py-3 bg-gradient-to-r from-primary-400 to-primary-500 hover:from-primary-500 hover:to-primary-600 text-black font-bold text-sm rounded-xl transition-all disabled:opacity-50 shadow-lg shadow-primary-400/20 glow-sm">
+          <button type="submit" disabled={loading} className="px-8 py-3 bg-gradient-to-r from-primary-400 to-primary-500 hover:from-primary-500 hover:to-primary-600 text-white font-bold text-sm rounded-xl transition-all disabled:opacity-50 shadow-lg shadow-primary-400/20 glow-sm">
             {loading ? t('freelanceSettings.saving') : t('freelanceSettings.save')}
           </button>
         </form>

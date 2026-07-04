@@ -19,15 +19,15 @@ export default function MessagesPageClient({ conversations }: MessagesPageClient
   const { t } = useTranslation();
 
   return (
-    <div className="min-h-screen bg-dark noise-bg">
+    <div className="min-h-screen bg-[#edf6fd] noise-bg">
       <div className="container-responsive py-10">
         {/* Header */}
         <div className="mb-10 animate-fade-in">
           <div className="inline-flex items-center gap-2 glass rounded-full px-4 py-2 mb-4">
             <MessageCircle className="w-4 h-4 text-primary-400" />
-            <span className="text-xs font-semibold text-neutral-300">{t('messages.badge')}</span>
+            <span className="text-xs font-semibold text-primary-700">{t('messages.badge')}</span>
           </div>
-          <h1 className="text-4xl font-black text-white mb-2">{t('messages.title')}</h1>
+          <h1 className="text-4xl font-black text-primary-800 mb-2">{t('messages.title')}</h1>
           <p className="text-neutral-400">{t('messages.subtitle')}</p>
         </div>
 
@@ -47,7 +47,7 @@ export default function MessagesPageClient({ conversations }: MessagesPageClient
                   </div>
                   <div className="flex-1">
                     <div className="flex items-center justify-between mb-1">
-                      <p className="text-base font-bold text-white">{conv.participant}</p>
+                      <p className="text-base font-bold text-primary-800">{conv.participant}</p>
                       <span className="text-xs text-neutral-500">{new Date(conv.lastMessageAt).toLocaleDateString('fr-FR')}</span>
                     </div>
                     <p className="text-sm text-neutral-400 truncate">{conv.lastMessage}</p>
