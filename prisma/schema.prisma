@@ -1,0 +1,472 @@
+// ThèsePro Database Schema
+// Complete database structure for the academic services marketplace
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// ============================================
+// ENUMS (SQLite doesn't support enums, using String with validation)
+// ============================================
+
+// UserRole: CLIENT, FREELANCE, ADMIN
+// OrderStatus: PENDING, IN_PROGRESS, DELIVERED, COMPLETED, CANCELLED, DISPUTED
+// PaymentStatus: PENDING, COMPLETED, FAILED, REFUNDED
+// WithdrawalStatus: PENDING, APPROVED, REJECTED, COMPLETED
+// ServiceOptionType: BASIC, STANDARD, PREMIUM
+
+// ============================================
+// USER & AUTHENTICATION
+// ============================================
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  name          String?
+  password      String
+  role          String    @default("CLIENT") // CLIENT, FREELANCE, ADMIN
+  emailVerified Boolean   @default(false)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  // Relations
+  freelance       Freelance?
+  ordersAsClient  Order[]         @relation("ClientOrders")
+  reviewsWritten  Review[]        @relation("ClientReviews")
+  conversations   Conversation[]  @relation("ClientConversations")
+  messagesSent    Message[]
+  favorites       Favorite[]
+  notifications   Notification[]
+
+  @@index([email])
+}
+
+// ============================================
+// FREELANCE
+// ============================================
+
+model Freelance {
+  id             String   @id @default(cuid())
+  userId         String   @unique
+  slug           String   @unique
+  avatar         String?
+  title          String
+  speciality     String
+  bio            String?
+  skills         String   // JSON array stored as string
+  sales          Int      @default(0)
+  rating         Float    @default(0)
+  reviewCount    Int      @default(0)
+  verified       Boolean  @default(false)
+  memberSince    String
+  responseTime   String
+  location       String
+  categoryId     String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  // Relations
+  user              User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  category          Category?  @relation(fields: [categoryId], references: [id])
+  services          Service[]
+  ordersAsFreelance Order[]    @relation("FreelanceOrders")
+  reviewsReceived   Review[]   @relation("FreelanceReviews")
+  conversations     Conversation[] @relation("FreelanceConversations")
+  withdrawals       Withdrawal[]
+
+  @@index([slug])
+  @@index([categoryId])
+  @@index([rating])
+  @@index([verified])
+}
+
+// ============================================
+// CATEGORIES
+// ============================================
+
+model Category {
+  id              String   @id @default(cuid())
+  slug            String   @unique
+  name            String
+  icon            String
+  description     String
+  color           String
+  serviceCount    Int      @default(0)
+  freelancerCount Int      @default(0)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  // Relations
+  freelances Freelance[]
+  services   Service[]
+
+  @@index([slug])
+}
+
+// ============================================
+// SERVICES
+// ============================================
+
+model Service {
+  id               String   @id @default(cuid())
+  slug             String   @unique
+  title            String
+  freelancerId     String
+  categoryId       String
+  price            Int
+  image            String?
+  rating           Float    @default(0)
+  reviewCount      Int      @default(0)
+  budget           Int      @default(0)
+  sponsored        Boolean  @default(false)
+  description      String
+  longDescription  String?
+  deliveryDays     Int
+  revisions        Int      @default(1)
+  active           Boolean  @default(true)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  // Relations
+  freelancer Freelance        @relation(fields: [freelancerId], references: [id], onDelete: Cascade)
+  category   Category         @relation(fields: [categoryId], references: [id])
+  options    ServiceOption[]
+  tags       ServiceTag[]
+  orders     Order[]
+  reviews    Review[]
+  favorites  Favorite[]
+  views      ServiceView[]
+
+  @@index([slug])
+  @@index([freelancerId])
+  @@index([categoryId])
+  @@index([rating])
+  @@index([sponsored])
+  @@index([price])
+}
+
+model ServiceOption {
+  id            String   @id @default(cuid())
+  serviceId     String
+  type          String   // BASIC, STANDARD, PREMIUM
+  name          String
+  description   String
+  price         Int
+  deliveryDays  Int
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  // Relations
+  service Service @relation(fields: [serviceId], references: [id], onDelete: Cascade)
+
+  @@unique([serviceId, type])
+  @@index([serviceId])
+}
+
+model ServiceTag {
+  id        String   @id @default(cuid())
+  serviceId String
+  tag       String
+  createdAt DateTime @default(now())
+
+  // Relations
+  service Service @relation(fields: [serviceId], references: [id], onDelete: Cascade)
+
+  @@unique([serviceId, tag])
+  @@index([serviceId])
+  @@index([tag])
+}
+
+// ============================================
+// ORDERS
+// ============================================
+
+model Order {
+  id               String   @id @default(cuid())
+  orderNumber      String   @unique
+  serviceId        String
+  clientId         String
+  freelanceId      String
+  optionType       String   @default("BASIC") // BASIC, STANDARD, PREMIUM
+  status           String   @default("PENDING") // PENDING, IN_PROGRESS, DELIVERED, COMPLETED, CANCELLED, DISPUTED
+  totalAmount      Int
+  platformFee      Int      @default(0)
+  freelanceEarnings Int     @default(0)
+  deliveryDate     DateTime?
+  completedAt      DateTime?
+  cancelledAt      DateTime?
+  cancellationReason String?
+  notes            String?
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  // Relations
+  service    Service          @relation(fields: [serviceId], references: [id])
+  client     User             @relation("ClientOrders", fields: [clientId], references: [id])
+  freelance  Freelance        @relation("FreelanceOrders", fields: [freelanceId], references: [id])
+  revisions  OrderRevision[]
+  payment    Payment?
+  review     Review?
+
+  @@index([orderNumber])
+  @@index([clientId])
+  @@index([freelanceId])
+  @@index([status])
+  @@index([createdAt])
+}
+
+model OrderRevision {
+  id        String   @id @default(cuid())
+  orderId   String
+  message   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  order Order @relation(fields: [orderId], references: [id], onDelete: Cascade)
+
+  @@index([orderId])
+}
+
+// ============================================
+// REVIEWS
+// ============================================
+
+model Review {
+  id          String   @id @default(cuid())
+  orderId     String   @unique
+  clientId    String
+  freelanceId String
+  serviceId   String
+  rating      Int
+  comment     String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  order     Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  client    User     @relation("ClientReviews", fields: [clientId], references: [id])
+  freelance Freelance @relation("FreelanceReviews", fields: [freelanceId], references: [id])
+  service   Service  @relation(fields: [serviceId], references: [id])
+
+  @@index([clientId])
+  @@index([freelanceId])
+  @@index([serviceId])
+  @@index([rating])
+}
+
+// ============================================
+// TESTIMONIALS
+// ============================================
+
+model Testimonial {
+  id        String   @id @default(cuid())
+  author    String
+  role      String
+  text      String
+  rating    Int      @default(5)
+  avatar    String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([rating])
+}
+
+// ============================================
+// MESSAGING
+// ============================================
+
+model Conversation {
+  id          String   @id @default(cuid())
+  clientId    String
+  freelanceId String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  client    User      @relation("ClientConversations", fields: [clientId], references: [id])
+  freelance Freelance @relation("FreelanceConversations", fields: [freelanceId], references: [id])
+  messages  Message[]
+
+  @@unique([clientId, freelanceId])
+  @@index([clientId])
+  @@index([freelanceId])
+}
+
+model Message {
+  id             String   @id @default(cuid())
+  conversationId String
+  senderId       String
+  content        String
+  read           Boolean  @default(false)
+  createdAt      DateTime @default(now())
+
+  // Relations
+  conversation Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  sender       User         @relation(fields: [senderId], references: [id])
+
+  @@index([conversationId])
+  @@index([senderId])
+  @@index([read])
+}
+
+// ============================================
+// PAYMENTS
+// ============================================
+
+model Payment {
+  id            String   @id @default(cuid())
+  orderId       String   @unique
+  amount        Int
+  status        String   @default("PENDING") // PENDING, COMPLETED, FAILED, REFUNDED
+  method        String?  // stripe, paypal, etc.
+  transactionId String?  @unique
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  // Relations
+  order Order @relation(fields: [orderId], references: [id], onDelete: Cascade)
+
+  @@index([orderId])
+  @@index([status])
+  @@index([transactionId])
+}
+
+model Withdrawal {
+  id          String   @id @default(cuid())
+  freelanceId String
+  amount      Int
+  status      String   @default("PENDING") // PENDING, APPROVED, REJECTED, COMPLETED
+  method      String?  // bank_transfer, paypal, etc.
+  processedAt DateTime?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  freelance Freelance @relation(fields: [freelanceId], references: [id], onDelete: Cascade)
+
+  @@index([freelanceId])
+  @@index([status])
+}
+
+// ============================================
+// FAVORITES
+// ============================================
+
+model Favorite {
+  id        String   @id @default(cuid())
+  userId    String
+  serviceId String
+  createdAt DateTime @default(now())
+
+  // Relations
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  service Service @relation(fields: [serviceId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, serviceId])
+  @@index([userId])
+  @@index([serviceId])
+}
+
+// ============================================
+// CONTACT MESSAGES
+// ============================================
+
+model ContactMessage {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  subject   String
+  message   String
+  status    String   @default("NEW") // NEW, READ, REPLIED
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([status])
+  @@index([email])
+}
+
+// ============================================
+// AUDIT LOG
+// ============================================
+
+model AuditLog {
+  id        String   @id @default(cuid())
+  userId    String?
+  action    String   // LOGIN, REGISTER, ORDER_CREATE, ORDER_UPDATE, REVIEW_CREATE, etc.
+  entity    String?  // order, service, review, user, etc.
+  entityId  String?
+  metadata  String?  // JSON string with additional data
+  ipAddress String?
+  userAgent String?
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+  @@index([action])
+  @@index([createdAt])
+}
+
+// ============================================
+// REPORTS / MODERATION
+// ============================================
+
+model Report {
+  id         String   @id @default(cuid())
+  reporterId String
+  targetType String   // service, review, user, message
+  targetId   String
+  reason     String
+  details    String?
+  status     String   @default("PENDING") // PENDING, REVIEWED, RESOLVED, DISMISSED
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@index([reporterId])
+  @@index([targetType])
+  @@index([status])
+}
+
+// ============================================
+// NOTIFICATIONS
+// ============================================
+
+model Notification {
+  id        String   @id @default(cuid())
+  userId    String
+  type      String   // ORDER_UPDATE, NEW_MESSAGE, REVIEW_RECEIVED, PAYMENT, etc.
+  title     String
+  message   String
+  read      Boolean  @default(false)
+  link      String?
+  createdAt DateTime @default(now())
+
+  // Relations
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([read])
+  @@index([createdAt])
+}
+
+// ============================================
+// SERVICE VIEWS (Analytics)
+// ============================================
+
+model ServiceView {
+  id        String   @id @default(cuid())
+  serviceId String
+  ipAddress String?
+  userAgent String?
+  createdAt DateTime @default(now())
+
+  // Relations
+  service Service @relation(fields: [serviceId], references: [id], onDelete: Cascade)
+
+  @@index([serviceId])
+  @@index([createdAt])
+}
