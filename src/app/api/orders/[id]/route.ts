@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getCurrentUser } from '@/lib/auth';
+import prisma from '@/lib/db';
 import { getOrderById, updateOrderStatus } from '@/lib/data-service';
 
 export async function GET(_request: NextRequest, { params }: { params: { id: string } }) {
@@ -36,7 +37,6 @@ export async function PATCH(request: NextRequest, { params }: { params: { id: st
     const updated = await updateOrderStatus(params.id, status);
 
     if (cancellationReason) {
-      const { default: prisma } = await import('@/lib/db');
       await prisma.order.update({
         where: { id: params.id },
         data: { cancellationReason },

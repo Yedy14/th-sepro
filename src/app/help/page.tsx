@@ -16,20 +16,20 @@ export default function HelpPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#edf6fd] noise-bg">
+    <div className="min-h-screen bg-bg noise-bg">
       {/* Hero */}
       <section className="relative py-24 overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(234,179,8,0.08),transparent_50%)]" />
-        <div className="absolute top-20 left-20 w-80 h-80 bg-primary-400/5 rounded-full blur-3xl animate-float" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(0,80,138,0.08),transparent_50%)]" />
+        <div className="absolute top-20 left-20 w-80 h-80 bg-blue/5 rounded-full blur-3xl animate-float" />
         
         <div className="container-responsive text-center relative z-10 animate-fade-in">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-primary-400 to-primary-600 mb-6 mx-auto">
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-blue to-navy mb-6 mx-auto">
             <HelpCircle className="w-8 h-8 text-white" />
           </div>
-          <h1 className="text-5xl md:text-6xl font-black text-primary-800 mb-4">
+          <h1 className="text-5xl md:text-6xl font-black text-navy mb-4">
             {t('help.title').split(' ').slice(0, -1).join(' ')} <span className="text-gradient">{t('help.title').split(' ').pop()}</span>
           </h1>
-          <p className="text-neutral-400 max-w-lg mx-auto">{t('help.subtitle')}</p>
+          <p className="text-navy/70 max-w-lg mx-auto">{t('help.subtitle')}</p>
         </div>
       </section>
 
@@ -41,17 +41,17 @@ export default function HelpPage() {
               const Icon = faq.icon;
               return (
                 <details key={i} className="group glass rounded-2xl overflow-hidden animate-fade-in" style={{ animationDelay: `${i * 50}ms` }}>
-                  <summary className="flex items-center justify-between p-6 cursor-pointer hover:bg-primary-50/50 transition-colors">
+                  <summary className="flex items-center justify-between p-6 cursor-pointer hover:bg-blue/5 transition-colors">
                     <div className="flex items-center gap-4">
-                      <div className="w-10 h-10 rounded-xl bg-primary-400/10 flex items-center justify-center flex-shrink-0">
-                        <Icon className="w-5 h-5 text-primary-400" />
+                      <div className="w-10 h-10 rounded-xl bg-blue/10 flex items-center justify-center flex-shrink-0">
+                        <Icon className="w-5 h-5 text-blue" />
                       </div>
-                      <span className="text-sm font-bold text-primary-800">{faq.q}</span>
+                      <span className="text-sm font-bold text-navy">{faq.q}</span>
                     </div>
-                    <ChevronDown className="w-5 h-5 text-neutral-500 group-open:rotate-180 transition-transform flex-shrink-0 ml-4" />
+                    <ChevronDown className="w-5 h-5 text-navy/70 group-open:rotate-180 transition-transform flex-shrink-0 ml-4" />
                   </summary>
                   <div className="px-6 pb-6 pl-20">
-                    <p className="text-sm text-neutral-400 leading-relaxed">{faq.a}</p>
+                    <p className="text-sm text-navy/70 leading-relaxed">{faq.a}</p>
                   </div>
                 </details>
               );

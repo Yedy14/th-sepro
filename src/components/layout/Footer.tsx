@@ -19,25 +19,25 @@ export function Footer() {
   }, []);
 
   return (
-    <footer className="bg-primary-800 border-t border-primary-700">
+    <footer className="bg-navy border-t border-blue/10">
       {/* Section principale */}
       <div className="container-responsive py-16">
         {/* Brand message */}
-        <div className="text-center mb-12 pb-10 border-b border-primary-700">
+        <div className="text-center mb-12 pb-10 border-b border-white/8">
           <Link href="/" className="inline-block mb-4 group">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-400 to-primary-300 flex items-center justify-center group-hover:scale-110 transition-transform">
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue to-blue flex items-center justify-center group-hover:scale-110 transition-transform shadow-md">
                 <span className="text-xl font-black text-white">T</span>
               </div>
               <div>
                 <span className="text-xl font-black text-white tracking-tight">
-                  THÈSE<span className="text-primary-200">PRO</span>
+                  THÈSE<span className="text-blue/60">PRO</span>
                 </span>
-                <span className="block text-[10px] text-primary-300 -mt-1 tracking-wider">{t('header.academicExperts')}</span>
+                <span className="block text-[10px] text-white/40 -mt-1 tracking-wider">{t('header.academicExperts')}</span>
               </div>
             </div>
           </Link>
-          <p className="text-sm text-primary-300 max-w-md mx-auto leading-relaxed">
+          <p className="text-sm text-white/60 max-w-md mx-auto leading-relaxed">
             {t('footer.aboutUs')}
           </p>
         </div>
@@ -47,19 +47,19 @@ export function Footer() {
           {/* Services */}
           <div>
             <h4 className="text-sm font-bold text-white mb-5 flex items-center gap-2">
-              <span className="w-1 h-4 bg-primary-400 rounded-full" />
+              <span className="w-1 h-4 bg-blue rounded-full" />
               {t('footer.ourServices')}
             </h4>
             <ul className="space-y-3">
               {categories.map((cat) => (
                 <li key={cat.slug}>
-                  <Link href={`/services?category=${cat.slug}`} className="text-sm text-primary-300 hover:text-white transition-colors">
+                  <Link href={`/services?category=${cat.slug}`} className="text-sm text-white/60 hover:text-white transition-colors">
                     {cat.name}
                   </Link>
                 </li>
               ))}
               <li>
-                <Link href="/services" className="text-sm text-primary-200 hover:text-white font-medium transition-colors flex items-center gap-1 group">
+                <Link href="/services" className="text-sm text-blue hover:text-white font-medium transition-colors flex items-center gap-1 group">
                   {t('footer.allServices')}
                   <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
                 </Link>
@@ -70,52 +70,52 @@ export function Footer() {
           {/* Freelances */}
           <div>
             <h4 className="text-sm font-bold text-white mb-5 flex items-center gap-2">
-              <span className="w-1 h-4 bg-primary-400 rounded-full" />
+              <span className="w-1 h-4 bg-blue rounded-full" />
               {t('footer.freelances')}
             </h4>
             <ul className="space-y-3">
-              <li><Link href="/freelances" className="text-sm text-primary-300 hover:text-white transition-colors">{t('footer.bestFreelances')}</Link></li>
-              <li><Link href="/register" className="text-sm text-primary-300 hover:text-white transition-colors">{t('footer.becomeFreelance')}</Link></li>
-              <li><Link href="/help" className="text-sm text-primary-300 hover:text-white transition-colors">{t('footer.freelanceGuide')}</Link></li>
-              <li><Link href="/messages" className="text-sm text-primary-300 hover:text-white transition-colors">{t('footer.community')}</Link></li>
+              <li><Link href="/freelances" className="text-sm text-white/60 hover:text-white transition-colors">{t('footer.bestFreelances')}</Link></li>
+              <li><Link href="/register" className="text-sm text-white/60 hover:text-white transition-colors">{t('footer.becomeFreelance')}</Link></li>
+              <li><Link href="/help" className="text-sm text-white/60 hover:text-white transition-colors">{t('footer.freelanceGuide')}</Link></li>
+              <li><Link href="/messages" className="text-sm text-white/60 hover:text-white transition-colors">{t('footer.community')}</Link></li>
             </ul>
           </div>
 
           {/* À propos */}
           <div>
             <h4 className="text-sm font-bold text-white mb-5 flex items-center gap-2">
-              <span className="w-1 h-4 bg-primary-400 rounded-full" />
+              <span className="w-1 h-4 bg-blue rounded-full" />
               {t('footer.about')}
             </h4>
             <ul className="space-y-3">
-              <li><Link href="/about" className="text-sm text-primary-300 hover:text-white transition-colors">{t('footer.ourStory')}</Link></li>
-              <li><Link href="/about" className="text-sm text-primary-300 hover:text-white transition-colors">{t('footer.ourTeam')}</Link></li>
-              <li><Link href="/help" className="text-sm text-primary-300 hover:text-white transition-colors">{t('footer.helpCenter')}</Link></li>
-              <li><Link href="/help" className="text-sm text-primary-300 hover:text-white transition-colors">{t('footer.blog')}</Link></li>
-              <li><Link href="/contact" className="text-sm text-primary-300 hover:text-white transition-colors">{t('footer.contactUs')}</Link></li>
+              <li><Link href="/about" className="text-sm text-white/60 hover:text-white transition-colors">{t('footer.ourStory')}</Link></li>
+              <li><Link href="/about" className="text-sm text-white/60 hover:text-white transition-colors">{t('footer.ourTeam')}</Link></li>
+              <li><Link href="/help" className="text-sm text-white/60 hover:text-white transition-colors">{t('footer.helpCenter')}</Link></li>
+              <li><Link href="/help" className="text-sm text-white/60 hover:text-white transition-colors">{t('footer.blog')}</Link></li>
+              <li><Link href="/contact" className="text-sm text-white/60 hover:text-white transition-colors">{t('footer.contactUs')}</Link></li>
             </ul>
           </div>
 
           {/* Contact */}
           <div>
             <h4 className="text-sm font-bold text-white mb-5 flex items-center gap-2">
-              <span className="w-1 h-4 bg-primary-400 rounded-full" />
+              <span className="w-1 h-4 bg-blue rounded-full" />
               {t('footer.question')}
             </h4>
-            <p className="text-sm text-primary-300 mb-5 leading-relaxed">
+            <p className="text-sm text-white/60 mb-5 leading-relaxed">
               {t('footer.teamAvailable')}
             </p>
             <div className="space-y-3 mb-5">
               <div className="flex items-center gap-2">
-                <Mail className="w-4 h-4 text-primary-400" />
-                <span className="text-sm text-primary-200">contact@thesepro.fr</span>
+                <Mail className="w-4 h-4 text-blue" />
+                <span className="text-sm text-white/70">contact@thesepro.fr</span>
               </div>
               <div className="flex items-center gap-2">
-                <Clock className="w-4 h-4 text-primary-400" />
-                <span className="text-sm text-primary-200">{t('footer.response24h')}</span>
+                <Clock className="w-4 h-4 text-blue" />
+                <span className="text-sm text-white/70">{t('footer.response24h')}</span>
               </div>
             </div>
-            <Link href="/help" className="inline-flex items-center gap-1.5 text-sm text-primary-200 hover:text-white font-medium transition-colors group">
+            <Link href="/help" className="inline-flex items-center gap-1.5 text-sm text-blue hover:text-white font-medium transition-colors group">
               {t('footer.helpCenter')}
               <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
             </Link>
@@ -123,23 +123,23 @@ export function Footer() {
         </div>
 
         {/* Bottom */}
-        <div className="pt-8 border-t border-primary-700">
+        <div className="pt-8 border-t border-white/8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-6">
-            <p className="text-sm text-primary-300 flex items-center gap-2">
-              &copy; {new Date().getFullYear()} ThèsePro &mdash; Fait avec <Heart className="w-4 h-4 text-red-400 fill-red-400" /> {t('footer.madeWith')}
+            <p className="text-sm text-white/50 flex items-center gap-2">
+              &copy; {new Date().getFullYear()} ThèsePro &mdash; Fait avec <Heart className="w-4 h-4 text-blue fill-blue" /> {t('footer.madeWith')}
             </p>
-            <div className="flex items-center gap-6 text-sm text-primary-300">
+            <div className="flex items-center gap-6 text-sm text-white/50">
               <Link href="#" className="hover:text-white transition-colors">{t('footer.terms')}</Link>
               <Link href="#" className="hover:text-white transition-colors">{t('footer.privacy')}</Link>
               <Link href="#" className="hover:text-white transition-colors">{t('footer.cookies')}</Link>
             </div>
           </div>
           <div className="flex items-center justify-between">
-            <p className="text-sm text-primary-400">Français &bull; XOF (F CFA) &bull; EUR (&euro;)</p>
+            <p className="text-sm text-white/40">Français &bull; XOF (F CFA) &bull; EUR (&euro;)</p>
             <div className="flex items-center gap-3">
               {['LinkedIn', 'YouTube', 'Facebook', 'TikTok'].map((s) => (
-                <a key={s} href="#" className="w-10 h-10 rounded-xl bg-primary-700 hover:bg-primary-600 flex items-center justify-center transition-all duration-300 group" aria-label={s}>
-                  <span className="text-xs font-bold text-primary-300 group-hover:text-white transition-colors">{s[0]}</span>
+                <a key={s} href="#" className="w-10 h-10 rounded-xl bg-white/5 hover:bg-white/10 border border-white/8 flex items-center justify-center transition-all duration-300 group" aria-label={s}>
+                  <span className="text-xs font-bold text-white/50 group-hover:text-white transition-colors">{s[0]}</span>
                 </a>
               ))}
             </div>

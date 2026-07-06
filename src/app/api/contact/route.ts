@@ -10,9 +10,9 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Tous les champs sont requis' }, { status: 400 });
     }
 
-    // For now, just log the contact form submission
-    // In production, you'd send an email or store in database
-    console.log('Contact form submission:', { name, email, subject, message });
+    await prisma.contactMessage.create({
+      data: { name, email, subject, message },
+    });
 
     return NextResponse.json({ success: true });
   } catch (error) {

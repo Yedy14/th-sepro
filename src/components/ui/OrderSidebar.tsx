@@ -64,8 +64,8 @@ export function OrderSidebar({ tiers, startingPrice, serviceSlug }: OrderSidebar
             key={tier.key}
             className={`block cursor-pointer rounded-2xl border-2 p-5 transition-all ${
               selectedTier === tier.key
-                ? 'border-primary-400 bg-primary-400/10 glow-sm'
-                : 'glass hover:bg-primary-50'
+                ? 'border-blue bg-blue/10 glow-sm'
+                : 'glass hover:bg-blue/5'
             }`}
           >
             <div className="flex items-start gap-3">
@@ -75,12 +75,12 @@ export function OrderSidebar({ tiers, startingPrice, serviceSlug }: OrderSidebar
                 value={tier.key}
                 checked={selectedTier === tier.key}
                 onChange={() => setSelectedTier(tier.key)}
-                className="mt-1 accent-yellow-500"
+                className="mt-1 accent-blue"
               />
               <div className="flex-1">
-                <span className="text-sm font-bold text-primary-800">{tier.label}</span>
-                <p className="text-xs text-neutral-400 mt-1">{tier.description}</p>
-                <p className="text-xs text-neutral-500 mt-1">{tier.deliveryDays} {t('orderSidebar.deliveryDays')}</p>
+                <span className="text-sm font-bold text-navy">{tier.label}</span>
+                <p className="text-xs text-navy/70 mt-1">{tier.description}</p>
+                <p className="text-xs text-navy/70 mt-1">{tier.deliveryDays} {t('orderSidebar.deliveryDays')}</p>
               </div>
             </div>
           </label>
@@ -90,7 +90,7 @@ export function OrderSidebar({ tiers, startingPrice, serviceSlug }: OrderSidebar
       {/* Order button */}
       <button
         onClick={handleOrder}
-        className="w-full h-12 bg-gradient-to-r from-primary-400 to-primary-500 hover:from-primary-500 hover:to-primary-600 text-white font-bold text-sm rounded-xl transition-all shadow-lg shadow-primary-400/20 glow-sm flex items-center justify-center gap-2 group mb-3"
+        className="w-full h-12 bg-gradient-to-r from-blue to-navy hover:from-blue hover:to-navy text-white font-bold text-sm rounded-xl transition-all shadow-md/20 glow-sm flex items-center justify-center gap-2 group mb-3"
       >
         <Sparkles className="w-4 h-4" />
         {t('orderSidebar.order')}
@@ -103,15 +103,15 @@ export function OrderSidebar({ tiers, startingPrice, serviceSlug }: OrderSidebar
 
       {/* Security badge */}
       <div className="flex items-center justify-center gap-2 mb-4">
-        <span className="text-xs text-neutral-500">{t('orderSidebar.payment')}</span>
-        <Lock className="w-3 h-3 text-green-500" />
-        <span className="text-xs text-green-500 font-semibold">{t('orderSidebar.secure')}</span>
+        <span className="text-xs text-navy/70">{t('orderSidebar.payment')}</span>
+        <Lock className="w-3 h-3 text-blue" />
+        <span className="text-xs text-blue font-semibold">{t('orderSidebar.secure')}</span>
       </div>
-      <p className="text-center text-[10px] text-neutral-600 mb-6">{t('orderSidebar.tls')}</p>
+      <p className="text-center text-[10px] text-navy/70 mb-6">{t('orderSidebar.tls')}</p>
 
       {/* Contact button */}
-      <button className="w-full h-12 glass rounded-xl text-primary-800 font-semibold text-sm hover:bg-primary-50 transition-all flex items-center justify-center gap-2 group">
-        <MessageCircle className="w-4 h-4 group-hover:text-primary-400 transition-colors" />
+      <button className="w-full h-12 glass rounded-xl text-navy font-semibold text-sm hover:bg-blue/5 transition-all flex items-center justify-center gap-2 group">
+        <MessageCircle className="w-4 h-4 group-hover:text-blue transition-colors" />
         {t('orderSidebar.contactSeller')}
       </button>
     </div>

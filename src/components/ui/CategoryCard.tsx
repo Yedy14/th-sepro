@@ -23,7 +23,7 @@ export function CategoryCard({ category, className }: CategoryCardProps) {
   return (
     <Link href={`/services?category=${category.slug}`}>
       <div className={cn(
-        'group relative bg-white rounded-xl border border-neutral-200 p-6 card-hover cursor-pointer overflow-hidden',
+        'group relative bg-white rounded-xl border border-blue/8 p-6 card-hover cursor-pointer overflow-hidden',
         className
       )}>
         <div className="absolute top-0 right-0 w-24 h-24 rounded-full opacity-10 -translate-y-8 translate-x-8" style={{ backgroundColor: category.color }} />
@@ -31,13 +31,13 @@ export function CategoryCard({ category, className }: CategoryCardProps) {
           <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style={{ backgroundColor: `${category.color}15` }}>
             <Icon className="w-6 h-6" style={{ color: category.color }} />
           </div>
-          <h3 className="text-base font-semibold text-neutral-900 mb-2 group-hover:text-primary-600 transition-colors">
+          <h3 className="text-base font-semibold text-navy mb-2 group-hover:text-navy transition-colors">
             {category.name}
           </h3>
-          <p className="text-sm text-neutral-500 line-clamp-2 mb-4">{category.description}</p>
-          <div className="flex items-center gap-3 text-xs text-neutral-400">
+          <p className="text-sm text-navy/70 line-clamp-2 mb-4">{category.description}</p>
+          <div className="flex items-center gap-3 text-xs text-navy/70">
             <span>{category.freelancerCount} {t('categoryCard.freelances')}</span>
-            <span className="w-1 h-1 rounded-full bg-neutral-300" />
+            <span className="w-1 h-1 rounded-full bg-blue/30" />
             <span>{category.serviceCount} {t('categoryCard.services')}</span>
           </div>
         </div>

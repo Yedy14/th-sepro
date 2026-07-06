@@ -1,9 +1,9 @@
 [build]
-  command = "npx prisma generate && npx prisma db push && npx tsx prisma/seed.ts && npm run build"
+  command = "npx prisma generate && npx prisma db push && npx prisma db seed && npm run build"
   publish = ".next"
 
 [build.environment]
-  DATABASE_URL = "file:./prisma/db.sqlite"
+  NODE_VERSION = "20"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"

@@ -77,13 +77,13 @@ export function OrderDetailClient({ order, currentUserId }: { order: OrderData; 
   };
 
   return (
-    <div className="min-h-screen bg-[#edf6fd] noise-bg">
+    <div className="min-h-screen bg-bg noise-bg">
       <div className="container-responsive py-10">
         {/* Breadcrumb */}
-        <div className="flex items-center gap-2 text-sm text-neutral-500 mb-8 animate-fade-in">
-          <Link href="/dashboard/orders" className="hover:text-primary-400 transition-colors">{t('orderDetail.orders')}</Link>
+        <div className="flex items-center gap-2 text-sm text-navy/70 mb-8 animate-fade-in">
+          <Link href="/dashboard/orders" className="hover:text-blue transition-colors">{t('orderDetail.orders')}</Link>
           <ChevronRight className="w-3 h-3" />
-          <span className="text-primary-800 font-semibold">{order.orderNumber}</span>
+          <span className="text-navy font-semibold">{order.orderNumber}</span>
         </div>
 
         <div className="grid lg:grid-cols-3 gap-6">
@@ -91,19 +91,19 @@ export function OrderDetailClient({ order, currentUserId }: { order: OrderData; 
           <div className="lg:col-span-2 space-y-6">
             {/* Service info */}
             <div className="glass rounded-2xl p-6 animate-fade-in">
-              <Link href={`/services/${order.service.slug}`} className="text-xl font-bold text-primary-800 hover:text-primary-400 transition-colors block mb-2">
+              <Link href={`/services/${order.service.slug}`} className="text-xl font-bold text-navy hover:text-blue transition-colors block mb-2">
                 {order.service.title}
               </Link>
               <div className="flex items-center gap-3 mb-3">
-                <span className="px-3 py-1 rounded-full bg-primary-50/50 border border-primary-200 text-xs text-neutral-400">{order.service.category}</span>
-                <span className="px-3 py-1 rounded-full bg-primary-400/10 border border-primary-400/20 text-xs text-primary-400 font-semibold">{t('orderDetail.option')} {order.optionType}</span>
+                <span className="px-3 py-1 rounded-full bg-blue/5 border border-blue/20 text-xs text-navy/70">{order.service.category}</span>
+                <span className="px-3 py-1 rounded-full bg-blue/10 border border-blue/20 text-xs text-blue font-semibold">{t('orderDetail.option')} {order.optionType}</span>
               </div>
-              <p className="text-sm text-neutral-400 leading-relaxed">{order.service.description}</p>
+              <p className="text-sm text-navy/70 leading-relaxed">{order.service.description}</p>
             </div>
 
             {/* Status timeline */}
             <div className="glass rounded-2xl p-6 animate-fade-in">
-              <h2 className="text-xl font-bold text-primary-800 mb-6">{t('orderDetail.progress')}</h2>
+              <h2 className="text-xl font-bold text-navy mb-6">{t('orderDetail.progress')}</h2>
               <div className="flex items-center justify-between">
                 {statusSteps.map((step, i) => {
                   const Icon = step.icon;
@@ -113,14 +113,14 @@ export function OrderDetailClient({ order, currentUserId }: { order: OrderData; 
                     <div key={step.key} className="flex items-center">
                       <div className="flex flex-col items-center">
                         <div className={`w-12 h-12 rounded-full flex items-center justify-center transition-all ${
-                          isActive ? 'bg-gradient-to-br from-primary-400 to-primary-600 text-white glow-sm' : 'bg-primary-50/50 text-neutral-600 border border-primary-200'
-                        } ${isCurrent ? 'ring-2 ring-primary-400/30 ring-offset-2 ring-offset-dark' : ''}`}>
+                          isActive ? 'bg-gradient-to-br from-blue to-navy text-white glow-sm' : 'bg-blue/5 text-navy/70 border border-blue/20'
+                        } ${isCurrent ? 'ring-2 ring-blue/30 ring-offset-2 ring-offset-dark' : ''}`}>
                           <Icon className="w-5 h-5" />
                         </div>
-                        <span className={`text-xs mt-2 font-semibold ${isActive ? 'text-primary-800' : 'text-neutral-600'}`}>{step.label}</span>
+                        <span className={`text-xs mt-2 font-semibold ${isActive ? 'text-navy' : 'text-navy/70'}`}>{step.label}</span>
                       </div>
                       {i < statusSteps.length - 1 && (
-                        <div className={`w-12 sm:w-20 h-1 mx-1 rounded-full ${i < currentStepIndex ? 'bg-gradient-to-r from-primary-400 to-primary-500' : 'bg-primary-50/50'}`} />
+                        <div className={`w-12 sm:w-20 h-1 mx-1 rounded-full ${i < currentStepIndex ? 'bg-gradient-to-r from-blue to-navy' : 'bg-blue/5'}`} />
                       )}
                     </div>
                   );
@@ -131,11 +131,11 @@ export function OrderDetailClient({ order, currentUserId }: { order: OrderData; 
             {/* Review */}
             {isClient && order.status === 'COMPLETED' && !order.review && !reviewSubmitted && (
               <div className="glass rounded-2xl p-6 animate-fade-in">
-                <h2 className="text-xl font-bold text-primary-800 mb-4">{t('orderDetail.leaveReview')}</h2>
+                <h2 className="text-xl font-bold text-navy mb-4">{t('orderDetail.leaveReview')}</h2>
                 <div className="flex items-center gap-1 mb-4">
                   {[1, 2, 3, 4, 5].map((star) => (
                     <button key={star} onClick={() => setReviewRating(star)} className="hover:scale-110 transition-transform">
-                      <Star className={`w-7 h-7 ${star <= reviewRating ? 'fill-primary-400 text-primary-400' : 'text-neutral-700'}`} />
+                      <Star className={`w-7 h-7 ${star <= reviewRating ? 'fill-blue text-blue' : 'text-navy'}`} />
                     </button>
                   ))}
                 </div>
@@ -143,12 +143,12 @@ export function OrderDetailClient({ order, currentUserId }: { order: OrderData; 
                   value={reviewComment}
                   onChange={(e) => setReviewComment(e.target.value)}
                   placeholder={t('orderDetail.reviewPlaceholder')}
-                  className="w-full h-28 p-4 text-sm rounded-xl glass text-primary-800 placeholder:text-neutral-600 focus:border-primary-400/50 outline-none resize-none mb-4"
+                  className="w-full h-28 p-4 text-sm rounded-xl glass text-navy placeholder:text-navy/70 focus:border-blue/50 outline-none resize-none mb-4"
                 />
                 <button
                   onClick={handleSubmitReview}
                   disabled={submitting}
-                  className="px-8 py-3 bg-gradient-to-r from-primary-400 to-primary-500 hover:from-primary-500 hover:to-primary-600 text-white font-bold text-sm rounded-xl transition-all disabled:opacity-50 shadow-lg shadow-primary-400/20 glow-sm"
+                  className="px-8 py-3 bg-gradient-to-r from-blue to-navy hover:from-blue hover:to-navy text-white font-bold text-sm rounded-xl transition-all disabled:opacity-50 shadow-md/20 glow-sm"
                 >
                   {submitting ? t('orderDetail.submitting') : t('orderDetail.publishReview')}
                 </button>
@@ -157,13 +157,13 @@ export function OrderDetailClient({ order, currentUserId }: { order: OrderData; 
 
             {order.review && (
               <div className="glass rounded-2xl p-6 animate-fade-in">
-                <h2 className="text-xl font-bold text-primary-800 mb-4">{t('orderDetail.reviewGiven')}</h2>
+                <h2 className="text-xl font-bold text-navy mb-4">{t('orderDetail.reviewGiven')}</h2>
                 <div className="flex items-center gap-1 mb-3">
                   {[1, 2, 3, 4, 5].map((star) => (
-                    <Star key={star} className={`w-6 h-6 ${star <= order.review!.rating ? 'fill-primary-400 text-primary-400' : 'text-neutral-700'}`} />
+                    <Star key={star} className={`w-6 h-6 ${star <= order.review!.rating ? 'fill-blue text-blue' : 'text-navy'}`} />
                   ))}
                 </div>
-                {order.review.comment && <p className="text-sm text-neutral-400 leading-relaxed">{order.review.comment}</p>}
+                {order.review.comment && <p className="text-sm text-navy/70 leading-relaxed">{order.review.comment}</p>}
               </div>
             )}
           </div>
@@ -171,45 +171,45 @@ export function OrderDetailClient({ order, currentUserId }: { order: OrderData; 
           {/* Sidebar */}
           <div className="space-y-4">
             <div className="glass rounded-2xl p-6 animate-fade-in">
-              <h3 className="text-sm font-bold text-primary-800 mb-4 flex items-center gap-2">
-                <ShoppingBag className="w-4 h-4 text-primary-400" />
+              <h3 className="text-sm font-bold text-navy mb-4 flex items-center gap-2">
+                <ShoppingBag className="w-4 h-4 text-blue" />
                 {t('orderDetail.summary')}
               </h3>
               <div className="space-y-4 text-sm">
                 <div className="flex justify-between items-center">
-                  <span className="text-neutral-500">{t('orderDetail.status')}</span>
-                  <span className="text-primary-800 font-bold">{statusLabels[order.status]}</span>
+                  <span className="text-navy/70">{t('orderDetail.status')}</span>
+                  <span className="text-navy font-bold">{statusLabels[order.status]}</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-neutral-500">{t('orderDetail.amount')}</span>
-                  <span className="text-primary-400 font-black text-lg">{formatPrice(order.totalAmount)}</span>
+                  <span className="text-navy/70">{t('orderDetail.amount')}</span>
+                  <span className="text-blue font-black text-lg">{formatPrice(order.totalAmount)}</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-neutral-500">{t('orderDetail.orderedOn')}</span>
-                  <span className="text-primary-800">{new Date(order.createdAt).toLocaleDateString('fr-FR')}</span>
+                  <span className="text-navy/70">{t('orderDetail.orderedOn')}</span>
+                  <span className="text-navy">{new Date(order.createdAt).toLocaleDateString('fr-FR')}</span>
                 </div>
                 {order.deliveryDate && (
                   <div className="flex justify-between items-center">
-                    <span className="text-neutral-500">{t('orderDetail.deliveryDate')}</span>
-                    <span className="text-primary-800">{new Date(order.deliveryDate).toLocaleDateString('fr-FR')}</span>
+                    <span className="text-navy/70">{t('orderDetail.deliveryDate')}</span>
+                    <span className="text-navy">{new Date(order.deliveryDate).toLocaleDateString('fr-FR')}</span>
                   </div>
                 )}
               </div>
             </div>
 
             <div className="glass rounded-2xl p-6 animate-fade-in">
-              <h3 className="text-sm font-bold text-primary-800 mb-3">{t('orderDetail.freelance')}</h3>
-              <Link href={`/freelances/${order.freelance.slug}`} className="text-sm text-primary-400 hover:text-primary-300 font-bold transition-colors">
+              <h3 className="text-sm font-bold text-navy mb-3">{t('orderDetail.freelance')}</h3>
+              <Link href={`/freelances/${order.freelance.slug}`} className="text-sm text-blue hover:text-blue/60 font-bold transition-colors">
                 {order.freelance.name}
               </Link>
-              <p className="text-xs text-neutral-500 mt-1">{order.freelance.title}</p>
+              <p className="text-xs text-navy/70 mt-1">{order.freelance.title}</p>
             </div>
 
             <Link
               href="/messages"
-              className="block w-full text-center py-3 glass rounded-xl text-primary-800 font-semibold text-sm hover:bg-primary-50 transition-all group"
+              className="block w-full text-center py-3 glass rounded-xl text-navy font-semibold text-sm hover:bg-blue/5 transition-all group"
             >
-              <MessageCircle className="w-4 h-4 inline mr-2 group-hover:text-primary-400 transition-colors" />
+              <MessageCircle className="w-4 h-4 inline mr-2 group-hover:text-blue transition-colors" />
               {t('orderDetail.contact')}
             </Link>
           </div>

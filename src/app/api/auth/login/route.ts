@@ -1,64 +1,50 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { createClient } from '@/lib/supabase';
 import prisma from '@/lib/db';
-import { verifyPassword, generateToken, createAuthCookie } from '@/lib/auth';
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
     const { email, password } = body;
 
-    // Validation
     if (!email || !password) {
       return NextResponse.json(
         { error: 'Email et mot de passe requis' },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
-    // Find user
+    const supabase = createClient();
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email: email.toLowerCase(),
+      password,
+    });
+
+    if (error) {
+      return NextResponse.json(
+        { error: 'Identifiants incorrects' },
+        { status: 401 },
+      );
+    }
+
     const user = await prisma.user.findUnique({
-      where: { email: email.toLowerCase() },
+      where: { id: data.user.id },
+      select: { id: true, email: true, name: true, role: true },
     });
 
     if (!user) {
       return NextResponse.json(
-        { error: 'Identifiants incorrects' },
-        { status: 401 }
+        { error: 'Utilisateur non trouvé' },
+        { status: 404 },
       );
     }
 
-    // Verify password
-    const isValid = await verifyPassword(password, user.password);
-    if (!isValid) {
-      return NextResponse.json(
-        { error: 'Identifiants incorrects' },
-        { status: 401 }
-      );
-    }
-
-    // Generate token and set cookie
-    const token = generateToken({
-      userId: user.id,
-      email: user.email,
-      role: user.role,
-    });
-
-    const response = NextResponse.json({
-      user: {
-        id: user.id,
-        email: user.email,
-        name: user.name,
-        role: user.role,
-      },
-      token,
-    });
-
-    return response;
+    return NextResponse.json({ user });
   } catch (error) {
     console.error('Login error:', error);
     return NextResponse.json(
       { error: 'Une erreur est survenue lors de la connexion' },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

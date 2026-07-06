@@ -60,7 +60,7 @@ export async function getFreelances(): Promise<Freelance[]> {
     reviewCount: f.reviewCount,
     verified: f.verified,
     bio: f.bio || '',
-    skills: JSON.parse(f.skills || '[]'),
+    skills: (f.skills as string[]) || [],
     memberSince: f.memberSince,
     responseTime: f.responseTime,
     location: f.location,
@@ -86,7 +86,7 @@ export async function getFreelanceBySlug(slug: string): Promise<Freelance | null
     reviewCount: freelance.reviewCount,
     verified: freelance.verified,
     bio: freelance.bio || '',
-    skills: JSON.parse(freelance.skills || '[]'),
+    skills: (freelance.skills as string[]) || [],
     memberSince: freelance.memberSince,
     responseTime: freelance.responseTime,
     location: freelance.location,
@@ -112,7 +112,7 @@ export async function getFreelanceById(id: string): Promise<Freelance | null> {
     reviewCount: freelance.reviewCount,
     verified: freelance.verified,
     bio: freelance.bio || '',
-    skills: JSON.parse(freelance.skills || '[]'),
+    skills: (freelance.skills as string[]) || [],
     memberSince: freelance.memberSince,
     responseTime: freelance.responseTime,
     location: freelance.location,
@@ -479,7 +479,7 @@ export async function createOrder(data: {
       serviceId: data.serviceId,
       clientId: data.clientId,
       freelanceId: service.freelancerId,
-      optionType: data.optionType,
+      optionType: data.optionType as 'BASIC' | 'STANDARD' | 'PREMIUM',
       totalAmount: data.totalAmount,
       platformFee,
       freelanceEarnings,
@@ -502,7 +502,7 @@ export async function createOrder(data: {
 }
 
 export async function updateOrderStatus(orderId: string, status: string) {
-  const updateData: Record<string, unknown> = { status };
+  const updateData: Record<string, unknown> = { status: status as 'PENDING' | 'IN_PROGRESS' | 'DELIVERED' | 'COMPLETED' | 'CANCELLED' | 'DISPUTED' };
   if (status === 'COMPLETED') updateData.completedAt = new Date();
   if (status === 'CANCELLED') updateData.cancelledAt = new Date();
 

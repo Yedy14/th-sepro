@@ -42,56 +42,56 @@ export default function SettingsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#edf6fd] noise-bg">
+    <div className="min-h-screen bg-bg noise-bg">
       <div className="container-responsive py-10 max-w-2xl">
         {/* Header */}
         <div className="mb-10 animate-fade-in">
           <div className="inline-flex items-center gap-2 glass rounded-full px-4 py-2 mb-4">
-            <Settings className="w-4 h-4 text-primary-400" />
-            <span className="text-xs font-semibold text-primary-700">{t('settings.badge')}</span>
+            <Settings className="w-4 h-4 text-blue" />
+            <span className="text-xs font-semibold text-navy">{t('settings.badge')}</span>
           </div>
-          <h1 className="text-4xl font-black text-primary-800 mb-2">{t('settings.title')}</h1>
-          <p className="text-neutral-400">{t('settings.subtitle')}</p>
+          <h1 className="text-4xl font-black text-navy mb-2">{t('settings.title')}</h1>
+          <p className="text-navy/70">{t('settings.subtitle')}</p>
         </div>
 
         {/* Alerts */}
         {error && (
-          <div className="flex items-center gap-3 bg-red-500/10 border border-red-500/20 rounded-2xl p-4 mb-6 animate-fade-in">
-            <AlertCircle className="w-5 h-5 text-red-400 flex-shrink-0" />
-            <p className="text-sm text-red-400">{error}</p>
+          <div className="flex items-center gap-3 bg-navy/10 border border-navy/20 rounded-2xl p-4 mb-6 animate-fade-in">
+            <AlertCircle className="w-5 h-5 text-navy flex-shrink-0" />
+            <p className="text-sm text-navy">{error}</p>
           </div>
         )}
         {success && (
-          <div className="flex items-center gap-3 bg-green-500/10 border border-green-500/20 rounded-2xl p-4 mb-6 animate-fade-in">
-            <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0" />
-            <p className="text-sm text-green-400">{success}</p>
+          <div className="flex items-center gap-3 bg-blue/10 border border-blue/20 rounded-2xl p-4 mb-6 animate-fade-in">
+            <CheckCircle className="w-5 h-5 text-blue flex-shrink-0" />
+            <p className="text-sm text-blue">{success}</p>
           </div>
         )}
 
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Personal info */}
           <div className="glass rounded-3xl p-8 animate-fade-in">
-            <h2 className="text-lg font-bold text-primary-800 mb-6 flex items-center gap-2">
-              <User className="w-5 h-5 text-primary-400" />
+            <h2 className="text-lg font-bold text-navy mb-6 flex items-center gap-2">
+              <User className="w-5 h-5 text-blue" />
               {t('settings.personalInfo')}
             </h2>
             <div className="space-y-4">
               <div>
-                <label className="block text-sm font-semibold text-primary-700 mb-2">{t('settings.fullName')}</label>
+                <label className="block text-sm font-semibold text-navy mb-2">{t('settings.fullName')}</label>
                 <input
                   type="text"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="w-full h-12 px-4 text-sm rounded-xl glass text-primary-800 placeholder:text-neutral-600 focus:border-primary-400/50 outline-none transition-all"
+                  className="w-full h-12 px-4 text-sm rounded-xl glass text-navy placeholder:text-navy/70 focus:border-blue/50 outline-none transition-all"
                 />
               </div>
               <div>
-                <label className="block text-sm font-semibold text-primary-700 mb-2">{t('settings.email')}</label>
+                <label className="block text-sm font-semibold text-navy mb-2">{t('settings.email')}</label>
                 <input
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full h-12 px-4 text-sm rounded-xl glass text-primary-800 placeholder:text-neutral-600 focus:border-primary-400/50 outline-none transition-all"
+                  className="w-full h-12 px-4 text-sm rounded-xl glass text-navy placeholder:text-navy/70 focus:border-blue/50 outline-none transition-all"
                 />
               </div>
             </div>
@@ -99,29 +99,29 @@ export default function SettingsPage() {
 
           {/* Password */}
           <div className="glass rounded-3xl p-8 animate-fade-in">
-            <h2 className="text-lg font-bold text-primary-800 mb-6 flex items-center gap-2">
-              <Lock className="w-5 h-5 text-primary-400" />
+            <h2 className="text-lg font-bold text-navy mb-6 flex items-center gap-2">
+              <Lock className="w-5 h-5 text-blue" />
               {t('settings.changePassword')}
             </h2>
             <div className="space-y-4">
               <div>
-                <label className="block text-sm font-semibold text-primary-700 mb-2">{t('settings.currentPassword')}</label>
+                <label className="block text-sm font-semibold text-navy mb-2">{t('settings.currentPassword')}</label>
                 <input
                   type="password"
                   value={currentPassword}
                   onChange={(e) => setCurrentPassword(e.target.value)}
                   placeholder="••••••••"
-                  className="w-full h-12 px-4 text-sm rounded-xl glass text-primary-800 placeholder:text-neutral-600 focus:border-primary-400/50 outline-none transition-all"
+                  className="w-full h-12 px-4 text-sm rounded-xl glass text-navy placeholder:text-navy/70 focus:border-blue/50 outline-none transition-all"
                 />
               </div>
               <div>
-                <label className="block text-sm font-semibold text-primary-700 mb-2">{t('settings.newPassword')}</label>
+                <label className="block text-sm font-semibold text-navy mb-2">{t('settings.newPassword')}</label>
                 <input
                   type="password"
                   value={newPassword}
                   onChange={(e) => setNewPassword(e.target.value)}
                   placeholder="Minimum 6 caractères"
-                  className="w-full h-12 px-4 text-sm rounded-xl glass text-primary-800 placeholder:text-neutral-600 focus:border-primary-400/50 outline-none transition-all"
+                  className="w-full h-12 px-4 text-sm rounded-xl glass text-navy placeholder:text-navy/70 focus:border-blue/50 outline-none transition-all"
                 />
               </div>
             </div>
@@ -130,7 +130,7 @@ export default function SettingsPage() {
           <button
             type="submit"
             disabled={loading}
-            className="px-8 py-3 bg-gradient-to-r from-primary-400 to-primary-500 hover:from-primary-500 hover:to-primary-600 text-white font-bold text-sm rounded-xl transition-all disabled:opacity-50 shadow-lg shadow-primary-400/20 glow-sm"
+            className="px-8 py-3 bg-gradient-to-r from-blue to-navy hover:from-blue hover:to-navy text-white font-bold text-sm rounded-xl transition-all disabled:opacity-50 shadow-md/20 glow-sm"
           >
             {loading ? t('settings.saving') : t('settings.saveChanges')}
           </button>

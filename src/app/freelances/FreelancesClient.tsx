@@ -32,35 +32,32 @@ export function FreelancesClient({ freelances, categories }: FreelancesClientPro
   }, [freelances, search, selectedCategory]);
 
   return (
-    <div className="min-h-screen bg-[#edf6fd] noise-overlay">
-      {/* Hero header with gradient */}
-      <div className="relative overflow-hidden border-b border-primary-100/50">
-        <div className="absolute inset-0 bg-gradient-to-br from-neutral-950 via-dark to-neutral-950" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(234,179,8,0.08),transparent_50%)]" />
-        
+    <div className="min-h-screen bg-bg noise-overlay">
+      {/* Hero header */}
+      <div className="border-b border-blue/8 bg-white">
         <div className="container-responsive relative z-10 py-12">
           <div className="flex flex-col md:flex-row md:items-end gap-6 justify-between">
-            <div className="animate-slide-up">
-              <nav className="flex items-center gap-2 text-sm text-neutral-500 mb-4">
-                <Link href="/" className="hover:text-primary-800 transition-colors">{t('common.home')}</Link>
+            <div>
+              <nav className="flex items-center gap-2 text-sm text-navy/60 mb-4">
+                <Link href="/" className="hover:text-blue transition-colors">{t('common.home')}</Link>
                 <span>/</span>
-                <span className="text-primary-700">{t('freelances.breadcrumb')}</span>
+                <span className="text-navy">{t('freelances.breadcrumb')}</span>
               </nav>
-              <h1 className="text-4xl md:text-5xl font-black text-primary-800 mb-3">
-                {t('freelances.title1')} <span className="text-gradient-primary">{t('freelances.title2')}</span> {t('freelances.title3')}
+              <h1 className="text-4xl md:text-5xl font-black text-navy mb-3">
+                {t('freelances.title1')} <span className="text-gradient">{t('freelances.title2')}</span> {t('freelances.title3')}
               </h1>
-              <p className="text-neutral-400 text-lg">{t('freelances.subtitle')}</p>
+              <p className="text-navy/60 text-lg">{t('freelances.subtitle')}</p>
             </div>
 
             {/* Search */}
-            <div className="relative w-full md:w-80 animate-slide-in-right">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-500" />
+            <div className="relative w-full md:w-80">
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-navy/40" />
               <input
                 type="text"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder={t('freelances.searchPlaceholder')}
-                className="w-full h-12 pl-11 pr-4 text-sm rounded-xl glass text-primary-800 placeholder:text-neutral-500 focus:border-primary-400/50 outline-none transition-all"
+                className="w-full h-12 pl-11 pr-4 text-sm rounded-xl bg-bg border border-blue/8 text-navy placeholder:text-navy/40 focus:border-blue/30 focus:shadow-sm outline-none transition-all"
               />
             </div>
           </div>
@@ -72,10 +69,10 @@ export function FreelancesClient({ freelances, categories }: FreelancesClientPro
         <div className="flex items-center gap-3 flex-wrap mb-10">
           <button
             onClick={() => setSelectedCategory('all')}
-            className={`text-sm px-5 py-2.5 rounded-xl font-medium transition-all flex items-center gap-2 ${
+            className={`text-sm px-5 py-2.5 rounded-xl font-medium transition-all flex items-center gap-2 border ${
               selectedCategory === 'all'
-                ? 'glass text-primary-400'
-                : 'glass text-neutral-400 hover:text-primary-800'
+                ? 'bg-blue/5 text-blue border-blue/20'
+                : 'bg-white text-navy/70 border-blue/8 hover:text-navy'
             }`}
           >
             <Users className="w-4 h-4" />
@@ -85,10 +82,10 @@ export function FreelancesClient({ freelances, categories }: FreelancesClientPro
             <button
               key={cat.slug}
               onClick={() => setSelectedCategory(cat.slug)}
-              className={`text-sm px-5 py-2.5 rounded-xl font-medium transition-all whitespace-nowrap flex items-center gap-2 ${
+              className={`text-sm px-5 py-2.5 rounded-xl font-medium transition-all whitespace-nowrap flex items-center gap-2 border ${
                 selectedCategory === cat.slug
-                  ? 'glass text-primary-400'
-                  : 'glass text-neutral-400 hover:text-primary-800'
+                  ? 'bg-blue/5 text-blue border-blue/20'
+                  : 'bg-white text-navy/70 border-blue/8 hover:text-navy'
               }`}
             >
               <span>{cat.icon}</span>
@@ -98,7 +95,7 @@ export function FreelancesClient({ freelances, categories }: FreelancesClientPro
           {selectedCategory !== 'all' && (
             <button
               onClick={() => setSelectedCategory('all')}
-              className="flex items-center gap-1 text-sm px-3 py-2.5 text-neutral-500 hover:text-primary-400 transition-all"
+              className="flex items-center gap-1 text-sm px-3 py-2.5 text-navy/60 hover:text-blue transition-all"
             >
               <X className="w-3.5 h-3.5" /> {t('freelances.clear')}
             </button>
@@ -107,12 +104,12 @@ export function FreelancesClient({ freelances, categories }: FreelancesClientPro
 
         {/* Results count */}
         <div className="flex items-center gap-3 mb-8">
-          <div className="h-px flex-1 bg-primary-50" />
-          <p className="text-sm text-neutral-500 flex items-center gap-2">
-            <Award className="w-4 h-4 text-primary-400" />
+          <div className="h-px flex-1 bg-blue/8" />
+          <p className="text-sm text-navy/60 flex items-center gap-2">
+            <Award className="w-4 h-4 text-blue" />
             {filtered.length} {filtered.length !== 1 ? t('freelances.foundPlural') : t('freelances.found')}
           </p>
-          <div className="h-px flex-1 bg-primary-50" />
+          <div className="h-px flex-1 bg-blue/8" />
         </div>
 
         {/* Results grid */}
@@ -125,12 +122,12 @@ export function FreelancesClient({ freelances, categories }: FreelancesClientPro
             ))}
           </div>
         ) : (
-          <div className="text-center py-20 glass rounded-3xl">
-            <div className="w-16 h-16 rounded-2xl bg-primary-50 flex items-center justify-center mx-auto mb-4">
-              <Search className="w-8 h-8 text-neutral-600" />
+          <div className="text-center py-20 bg-white rounded-3xl shadow-sm border border-blue/8">
+            <div className="w-16 h-16 rounded-2xl bg-blue/5 flex items-center justify-center mx-auto mb-4">
+              <Search className="w-8 h-8 text-navy/40" />
             </div>
-            <p className="text-neutral-400 text-lg font-semibold mb-2">{t('freelances.noFreelance')}</p>
-            <p className="text-neutral-600 text-sm">{t('freelances.noFreelanceDesc')}</p>
+            <p className="text-navy/70 text-lg font-semibold mb-2">{t('freelances.noFreelance')}</p>
+            <p className="text-navy/50 text-sm">{t('freelances.noFreelanceDesc')}</p>
           </div>
         )}
       </div>

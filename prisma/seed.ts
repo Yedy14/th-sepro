@@ -1,4 +1,4 @@
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient, ServiceOptionType } from '@prisma/client';
 import { categories } from '../src/data/categories';
 import { freelances } from '../src/data/freelances';
 import { services } from '../src/data/services';
@@ -74,7 +74,7 @@ async function main() {
         title: f.title,
         speciality: f.speciality,
         bio: f.bio,
-        skills: JSON.stringify(f.skills),
+        skills: f.skills as any,
         sales: f.sales,
         rating: f.rating,
         reviewCount: f.reviewCount,
@@ -129,7 +129,7 @@ async function main() {
           await prisma.serviceOption.create({
             data: {
               serviceId: service.id,
-              type: type.toUpperCase(),
+              type: type.toUpperCase() as ServiceOptionType,
               name: option.name,
               description: option.description,
               price: option.price,

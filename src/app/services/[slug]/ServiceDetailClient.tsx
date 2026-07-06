@@ -70,16 +70,16 @@ export default function ServiceDetailClient({ service, freelance, relatedService
   const { t } = useTranslation();
 
   return (
-    <div className="min-h-screen bg-[#edf6fd] noise-bg">
+    <div className="min-h-screen bg-bg noise-bg">
       {/* Breadcrumb */}
-      <div className="border-b border-primary-100">
+      <div className="border-b border-blue/8">
         <div className="container-responsive py-4">
-          <nav className="flex items-center gap-2 text-sm text-neutral-500 animate-fade-in">
-            <Link href="/" className="hover:text-primary-400 transition-colors">{t('common.home')}</Link>
+          <nav className="flex items-center gap-2 text-sm text-navy/70 animate-fade-in">
+            <Link href="/" className="hover:text-blue transition-colors">{t('common.home')}</Link>
             <ChevronRight className="w-3 h-3" />
-            <Link href="/services" className="hover:text-primary-400 transition-colors">{t('services.breadcrumb')}</Link>
+            <Link href="/services" className="hover:text-blue transition-colors">{t('services.breadcrumb')}</Link>
             <ChevronRight className="w-3 h-3" />
-            <span className="text-primary-700">{service.title}</span>
+            <span className="text-navy">{service.title}</span>
           </nav>
         </div>
       </div>
@@ -98,12 +98,12 @@ export default function ServiceDetailClient({ service, freelance, relatedService
                 style={{ objectPosition: 'center' }}
                 priority
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-navy/60 via-transparent to-transparent" />
               <div className="absolute bottom-6 left-6 right-6">
                 <div className="flex items-center gap-3 mb-3">
-                  <span className="glass rounded-full px-4 py-1.5 text-xs font-semibold text-primary-800">{service.category}</span>
+                  <span className="glass rounded-full px-4 py-1.5 text-xs font-semibold text-navy">{service.category}</span>
                   {freelance.verified && (
-                    <span className="glass rounded-full px-4 py-1.5 text-xs font-semibold text-primary-400 flex items-center gap-1">
+                    <span className="glass rounded-full px-4 py-1.5 text-xs font-semibold text-blue flex items-center gap-1">
                       <CheckCircle className="w-3 h-3" /> {t('serviceDetail.verified')}
                     </span>
                   )}
@@ -113,33 +113,33 @@ export default function ServiceDetailClient({ service, freelance, relatedService
 
             {/* Title & rating */}
             <div className="animate-fade-in">
-              <h1 className="text-3xl md:text-4xl font-black text-primary-800 mb-4">{service.title}</h1>
+              <h1 className="text-3xl md:text-4xl font-black text-navy mb-4">{service.title}</h1>
               <div className="flex flex-wrap items-center gap-4 text-sm">
                 <div className="flex items-center gap-1">
-                  <Star className="w-5 h-5 fill-primary-400 text-primary-400" />
-                  <span className="text-primary-800 font-bold">{service.rating.toFixed(1)}</span>
-                  <span className="text-neutral-500">({service.reviewCount} {t('serviceDetail.reviews')})</span>
+                  <Star className="w-5 h-5 fill-blue text-blue" />
+                  <span className="text-navy font-bold">{service.rating.toFixed(1)}</span>
+                  <span className="text-navy/70">({service.reviewCount} {t('serviceDetail.reviews')})</span>
                 </div>
-                <span className="text-neutral-600">|</span>
-                <span className="text-neutral-400">{service.reviewCount} {t('serviceDetail.ordersCompleted')}</span>
-                <span className="text-neutral-600">|</span>
-                <span className="text-neutral-400">{t('serviceDetail.by')} <Link href={`/freelances/${freelance.slug}`} className="text-primary-400 font-bold hover:text-primary-300 transition-colors">{freelance.name}</Link></span>
+                <span className="text-navy/70">|</span>
+                <span className="text-navy/70">{service.reviewCount} {t('serviceDetail.ordersCompleted')}</span>
+                <span className="text-navy/70">|</span>
+                <span className="text-navy/70">{t('serviceDetail.by')} <Link href={`/freelances/${freelance.slug}`} className="text-blue font-bold hover:text-blue/60 transition-colors">{freelance.name}</Link></span>
               </div>
             </div>
 
             {/* Description */}
             <div className="glass rounded-2xl p-8 animate-fade-in">
-              <h2 className="text-xl font-bold text-primary-800 mb-4">{t('serviceDetail.description')}</h2>
-              <p className="text-neutral-400 leading-relaxed whitespace-pre-line">{service.description}</p>
+              <h2 className="text-xl font-bold text-navy mb-4">{t('serviceDetail.description')}</h2>
+              <p className="text-navy/70 leading-relaxed whitespace-pre-line">{service.description}</p>
             </div>
 
             {/* Tags */}
             {service.tags && service.tags.length > 0 && (
               <div className="glass rounded-2xl p-6 animate-fade-in">
-                <h2 className="text-xl font-bold text-primary-800 mb-4">{t('serviceDetail.skills')}</h2>
+                <h2 className="text-xl font-bold text-navy mb-4">{t('serviceDetail.skills')}</h2>
                 <div className="flex flex-wrap gap-2">
                   {service.tags.map((tag) => (
-                    <span key={tag} className="text-xs text-primary-700 glass px-4 py-2 rounded-full">{tag}</span>
+                    <span key={tag} className="text-xs text-navy glass px-4 py-2 rounded-full">{tag}</span>
                   ))}
                 </div>
               </div>
@@ -148,7 +148,7 @@ export default function ServiceDetailClient({ service, freelance, relatedService
             {/* Freelance card */}
             <div className="glass rounded-2xl p-6 animate-fade-in">
               <div className="flex items-center gap-4">
-                <div className="w-16 h-16 rounded-full overflow-hidden bg-primary-700 flex-shrink-0 ring-2 ring-primary-400/20">
+                <div className="w-16 h-16 rounded-full overflow-hidden bg-blue flex-shrink-0 ring-2 ring-blue/20">
                   <Image 
                     src={freelance.avatar || '/placeholder-avatar.jpg'} 
                     alt={freelance.name} 
@@ -160,11 +160,11 @@ export default function ServiceDetailClient({ service, freelance, relatedService
                 </div>
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-1">
-                    <Link href={`/freelances/${freelance.slug}`} className="text-lg font-bold text-primary-800 hover:text-primary-400 transition-colors">{freelance.name}</Link>
-                    {freelance.verified && <CheckCircle className="w-4 h-4 text-primary-400" />}
+                    <Link href={`/freelances/${freelance.slug}`} className="text-lg font-bold text-navy hover:text-blue transition-colors">{freelance.name}</Link>
+                    {freelance.verified && <CheckCircle className="w-4 h-4 text-blue" />}
                   </div>
-                  <p className="text-sm text-neutral-400 mb-2">{freelance.title}</p>
-                  <div className="flex flex-wrap items-center gap-3 text-xs text-neutral-500">
+                  <p className="text-sm text-navy/70 mb-2">{freelance.title}</p>
+                  <div className="flex flex-wrap items-center gap-3 text-xs text-navy/70">
                     <span className="flex items-center gap-1"><MapPin className="w-3 h-3" /> {freelance.location}</span>
                     <span className="flex items-center gap-1"><Clock className="w-3 h-3" /> {t('serviceDetail.responseTime')} {freelance.responseTime}</span>
                     <span className="flex items-center gap-1"><Calendar className="w-3 h-3" /> {t('serviceDetail.memberSince')} {freelance.memberSince}</span>
@@ -176,7 +176,7 @@ export default function ServiceDetailClient({ service, freelance, relatedService
             {/* Related services */}
             {relatedServices.length > 0 && (
               <div className="animate-fade-in">
-                <h2 className="text-xl font-bold text-primary-800 mb-4">{t('serviceDetail.similarServices')}</h2>
+                <h2 className="text-xl font-bold text-navy mb-4">{t('serviceDetail.similarServices')}</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
                   {relatedServices.map((s) => (
                     <ServiceCard key={s.id} service={s as any} freelance={freelance as any} />

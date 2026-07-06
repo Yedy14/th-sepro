@@ -17,7 +17,7 @@ export async function PATCH(request: NextRequest) {
     if (title) updateData.title = title;
     if (speciality) updateData.speciality = speciality;
     if (bio !== undefined) updateData.bio = bio;
-    if (skills) updateData.skills = JSON.stringify(skills);
+    if (skills) updateData.skills = skills;
     if (location) updateData.location = location;
     if (responseTime) updateData.responseTime = responseTime;
     if (avatar) updateData.avatar = avatar;

@@ -18,8 +18,8 @@ export function Avatar({ name, src, size = 'md', className }: AvatarProps) {
 
   const initials = getInitials(name);
   const colors = [
-    'bg-primary-500', 'bg-primary-600', 'bg-accent-500', 'bg-green-500',
-    'bg-purple-500', 'bg-pink-500', 'bg-indigo-500', 'bg-teal-500',
+    'bg-blue', 'bg-blue', 'bg-blue', 'bg-blue/50',
+    'bg-navy', 'bg-blue', 'bg-navy', 'bg-blue',
   ];
   const colorIndex = name.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0) % colors.length;
 
@@ -54,7 +54,7 @@ export function AvatarGroup({ names, max = 4, size = 'md', className }: AvatarGr
       ))}
       {remaining > 0 && (
         <div className={cn(
-          'rounded-full bg-neutral-200 text-neutral-600 font-semibold flex items-center justify-center ring-2 ring-white',
+          'rounded-full bg-blue/20 text-navy/70 font-semibold flex items-center justify-center ring-2 ring-white',
           size === 'sm' ? 'w-7 h-7 text-xs' : size === 'md' ? 'w-10 h-10 text-sm' : 'w-14 h-14 text-base'
         )}>
           +{remaining}

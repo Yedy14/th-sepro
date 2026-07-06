@@ -27,32 +27,32 @@ export default function DashboardPageClient({ user, dashboardData }: DashboardPa
       value: dashboardData.activeOrders,
       icon: ShoppingBag,
       color: 'from-blue-500 to-blue-600',
-      bgColor: 'bg-blue-500/10',
-      textColor: 'text-blue-400',
+      bgColor: 'bg-blue/10',
+      textColor: 'text-blue',
     },
     {
       label: t('dashboard.totalSpent'),
       value: formatPrice(dashboardData.totalSpent),
       icon: DollarSign,
-      color: 'from-primary-400 to-primary-600',
-      bgColor: 'bg-primary-400/10',
-      textColor: 'text-primary-400',
+      color: 'from-blue to-navy',
+      bgColor: 'bg-blue/10',
+      textColor: 'text-blue',
     },
     {
       label: t('dashboard.reviewsGiven'),
       value: dashboardData.reviewsGiven,
       icon: Star,
       color: 'from-yellow-500 to-yellow-600',
-      bgColor: 'bg-yellow-500/10',
-      textColor: 'text-yellow-400',
+      bgColor: 'bg-blue/10',
+      textColor: 'text-blue',
     },
     {
       label: t('dashboard.favorites'),
       value: dashboardData.favoritesCount,
       icon: TrendingUp,
       color: 'from-green-500 to-green-600',
-      bgColor: 'bg-green-500/10',
-      textColor: 'text-green-400',
+      bgColor: 'bg-blue/10',
+      textColor: 'text-blue',
     },
   ];
 
@@ -66,18 +66,18 @@ export default function DashboardPageClient({ user, dashboardData }: DashboardPa
   };
 
   return (
-    <div className="min-h-screen bg-[#edf6fd] noise-bg">
+    <div className="min-h-screen bg-bg noise-bg">
       <div className="container-responsive py-10">
         {/* Header */}
         <div className="mb-10 animate-fade-in">
           <div className="inline-flex items-center gap-2 glass rounded-full px-4 py-2 mb-4">
-            <div className="w-2 h-2 rounded-full bg-primary-400 animate-pulse" />
-            <span className="text-xs font-semibold text-primary-700">{t('dashboard.badge')}</span>
+            <div className="w-2 h-2 rounded-full bg-blue animate-pulse" />
+            <span className="text-xs font-semibold text-navy">{t('dashboard.badge')}</span>
           </div>
-          <h1 className="text-4xl md:text-5xl font-black text-primary-800 mb-2">
+          <h1 className="text-4xl md:text-5xl font-black text-navy mb-2">
             {t('dashboard.hello')} <span className="text-gradient">{user.name?.split(' ')[0] || user.email}</span>
           </h1>
-          <p className="text-lg text-neutral-400">{t('dashboard.welcome')}</p>
+          <p className="text-lg text-navy/70">{t('dashboard.welcome')}</p>
         </div>
 
         {/* Stats grid */}
@@ -95,7 +95,7 @@ export default function DashboardPageClient({ user, dashboardData }: DashboardPa
                     <Icon className={`w-6 h-6 ${stat.textColor}`} />
                   </div>
                 </div>
-                <p className="text-sm text-neutral-400 mb-1 relative z-10">{stat.label}</p>
+                <p className="text-sm text-navy/70 mb-1 relative z-10">{stat.label}</p>
                 <p className={`text-3xl font-black ${stat.textColor} relative z-10`}>{stat.value}</p>
                 <div className={`w-20 h-20 rounded-full bg-gradient-to-br ${stat.color} opacity-10 blur-2xl absolute -top-4 -right-4`} />
               </div>
@@ -107,15 +107,15 @@ export default function DashboardPageClient({ user, dashboardData }: DashboardPa
         <div className="glass rounded-3xl p-8 mb-8 animate-fade-in">
           <div className="flex items-center justify-between mb-6">
             <div>
-              <h2 className="text-2xl font-bold text-primary-800 mb-1">{t('dashboard.recentOrders')}</h2>
-              <p className="text-sm text-neutral-400">{t('dashboard.recentActivity')}</p>
+              <h2 className="text-2xl font-bold text-navy mb-1">{t('dashboard.recentOrders')}</h2>
+              <p className="text-sm text-navy/70">{t('dashboard.recentActivity')}</p>
             </div>
             <Link
               href="/dashboard/orders"
-              className="flex items-center gap-2 px-5 py-2.5 glass rounded-xl hover:bg-primary-50 transition-all group"
+              className="flex items-center gap-2 px-5 py-2.5 glass rounded-xl hover:bg-blue/5 transition-all group"
             >
-              <span className="text-sm font-semibold text-primary-800">{t('dashboard.seeAll')}</span>
-              <ArrowRight className="w-4 h-4 text-primary-400 group-hover:translate-x-1 transition-transform" />
+              <span className="text-sm font-semibold text-navy">{t('dashboard.seeAll')}</span>
+              <ArrowRight className="w-4 h-4 text-blue group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
 
@@ -125,38 +125,38 @@ export default function DashboardPageClient({ user, dashboardData }: DashboardPa
                 <Link
                   key={order.id}
                   href={`/dashboard/orders/${order.id}`}
-                  className="flex items-center justify-between p-5 rounded-2xl bg-primary-50/50 hover:bg-primary-50 border border-primary-100 hover:border-primary-400/20 transition-all group"
+                  className="flex items-center justify-between p-5 rounded-2xl bg-blue/5 hover:bg-blue/5 border border-blue/8 hover:border-blue/20 transition-all group"
                 >
                   <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary-400/20 to-primary-600/20 flex items-center justify-center">
-                      <ShoppingBag className="w-5 h-5 text-primary-400" />
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue/20 to-navy/20 flex items-center justify-center">
+                      <ShoppingBag className="w-5 h-5 text-blue" />
                     </div>
                     <div>
-                      <p className="text-sm font-bold text-primary-800 group-hover:text-primary-400 transition-colors">{order.serviceTitle}</p>
-                      <p className="text-xs text-neutral-500">{order.orderNumber} • {new Date(order.createdAt).toLocaleDateString('fr-FR')}</p>
+                      <p className="text-sm font-bold text-navy group-hover:text-blue transition-colors">{order.serviceTitle}</p>
+                      <p className="text-xs text-navy/70">{order.orderNumber} • {new Date(order.createdAt).toLocaleDateString('fr-FR')}</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-4">
                     <span className={`text-xs px-3 py-1.5 rounded-full font-semibold ${
-                      order.status === 'COMPLETED' ? 'text-green-400 bg-green-400/10' :
-                      order.status === 'IN_PROGRESS' ? 'text-blue-400 bg-blue-400/10' :
-                      order.status === 'PENDING' ? 'text-yellow-400 bg-yellow-400/10' :
-                      'text-neutral-400 bg-primary-50'
+                      order.status === 'COMPLETED' ? 'text-blue bg-blue/10' :
+                      order.status === 'IN_PROGRESS' ? 'text-blue bg-blue/10' :
+                      order.status === 'PENDING' ? 'text-blue bg-blue/10' :
+                      'text-navy/70 bg-blue/5'
                     }`}>
                       {statusLabel(order.status)}
                     </span>
-                    <span className="text-sm font-black text-primary-400">{formatPrice(order.totalAmount)}</span>
+                    <span className="text-sm font-black text-blue">{formatPrice(order.totalAmount)}</span>
                   </div>
                 </Link>
               ))}
             </div>
           ) : (
             <div className="text-center py-12">
-              <div className="w-20 h-20 rounded-full bg-primary-400/10 flex items-center justify-center mx-auto mb-4">
-                <ShoppingBag className="w-10 h-10 text-primary-400/50" />
+              <div className="w-20 h-20 rounded-full bg-blue/10 flex items-center justify-center mx-auto mb-4">
+                <ShoppingBag className="w-10 h-10 text-blue/50" />
               </div>
-              <p className="text-neutral-400 mb-2">{t('dashboard.noOrders')}</p>
-              <Link href="/services" className="text-primary-400 hover:text-primary-300 font-semibold text-sm transition-colors">
+              <p className="text-navy/70 mb-2">{t('dashboard.noOrders')}</p>
+              <Link href="/services" className="text-blue hover:text-blue/60 font-semibold text-sm transition-colors">
                 {t('dashboard.discoverServices')}
               </Link>
             </div>
@@ -166,25 +166,25 @@ export default function DashboardPageClient({ user, dashboardData }: DashboardPa
         {/* Quick actions */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5 animate-fade-in">
           <Link href="/services" className="glass rounded-2xl p-6 card-hover group">
-            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary-400 to-primary-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue to-navy flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
               <ShoppingBag className="w-6 h-6 text-white" />
             </div>
-            <h3 className="text-lg font-bold text-primary-800 mb-1">{t('dashboard.exploreServices')}</h3>
-            <p className="text-sm text-neutral-400">{t('dashboard.exploreDesc')}</p>
+            <h3 className="text-lg font-bold text-navy mb-1">{t('dashboard.exploreServices')}</h3>
+            <p className="text-sm text-navy/70">{t('dashboard.exploreDesc')}</p>
           </Link>
           <Link href="/freelances" className="glass rounded-2xl p-6 card-hover group">
             <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-              <Star className="w-6 h-6 text-primary-800" />
+              <Star className="w-6 h-6 text-navy" />
             </div>
-            <h3 className="text-lg font-bold text-primary-800 mb-1">{t('dashboard.topFreelances')}</h3>
-            <p className="text-sm text-neutral-400">{t('dashboard.topFreelancesDesc')}</p>
+            <h3 className="text-lg font-bold text-navy mb-1">{t('dashboard.topFreelances')}</h3>
+            <p className="text-sm text-navy/70">{t('dashboard.topFreelancesDesc')}</p>
           </Link>
           <Link href="/messages" className="glass rounded-2xl p-6 card-hover group">
             <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-green-500 to-green-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-              <DollarSign className="w-6 h-6 text-primary-800" />
+              <DollarSign className="w-6 h-6 text-navy" />
             </div>
-            <h3 className="text-lg font-bold text-primary-800 mb-1">{t('dashboard.messages')}</h3>
-            <p className="text-sm text-neutral-400">{t('dashboard.messagesDesc')}</p>
+            <h3 className="text-lg font-bold text-navy mb-1">{t('dashboard.messages')}</h3>
+            <p className="text-sm text-navy/70">{t('dashboard.messagesDesc')}</p>
           </Link>
         </div>
       </div>

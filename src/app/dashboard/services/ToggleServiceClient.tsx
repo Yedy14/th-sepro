@@ -24,8 +24,8 @@ export function ToggleServiceClient({ serviceId, active }: { serviceId: string; 
       disabled={loading}
       className={`px-3 py-1.5 text-xs font-medium rounded-full transition-colors ${
         isActive
-          ? 'bg-green-500/10 text-green-400 hover:bg-green-500/20'
-          : 'bg-primary-50 text-neutral-500 hover:bg-primary-100'
+          ? 'bg-blue/10 text-blue hover:bg-blue/20'
+          : 'bg-blue/5 text-navy/70 hover:bg-blue/10'
       }`}
     >
       {isActive ? t('dashboardServices.active') : t('dashboardServices.inactive')}

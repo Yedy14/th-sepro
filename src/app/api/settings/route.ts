@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getCurrentUser, hashPassword } from '@/lib/auth';
+import { getCurrentUser } from '@/lib/auth';
+import { createClient } from '@/lib/supabase';
 import prisma from '@/lib/db';
 
 export async function PATCH(request: NextRequest) {
@@ -19,14 +20,25 @@ export async function PATCH(request: NextRequest) {
       if (!currentPassword) {
         return NextResponse.json({ error: 'Mot de passe actuel requis' }, { status: 400 });
       }
-      const existingUser = await prisma.user.findUnique({ where: { id: user.id } });
-      if (!existingUser) return NextResponse.json({ error: 'Utilisateur non trouvé' }, { status: 404 });
 
-      const { verifyPassword } = await import('@/lib/auth');
-      const isValid = await verifyPassword(currentPassword, existingUser.password);
-      if (!isValid) return NextResponse.json({ error: 'Mot de passe actuel incorrect' }, { status: 400 });
+      const supabase = createClient();
+      const { error: signInError } = await supabase.auth.signInWithPassword({
+        email: user.email,
+        password: currentPassword,
+      });
+      if (signInError) {
+        return NextResponse.json({ error: 'Mot de passe actuel incorrect' }, { status: 400 });
+      }
 
-      updateData.password = await hashPassword(newPassword);
+      const { error: updateError } = await supabase.auth.updateUser({ password: newPassword });
+      if (updateError) {
+        return NextResponse.json({ error: 'Erreur lors du changement de mot de passe' }, { status: 500 });
+      }
+    }
+
+    if (email && email !== user.email) {
+      const supabase = createClient();
+      await supabase.auth.updateUser({ email: email.toLowerCase() });
     }
 
     const updated = await prisma.user.update({

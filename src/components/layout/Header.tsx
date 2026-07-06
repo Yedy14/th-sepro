@@ -59,20 +59,20 @@ export function Header() {
   return (
     <>
       {/* Header principal */}
-      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'glass shadow-lg' : 'bg-white/80 backdrop-blur-md'}`}>
+      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-sm' : 'bg-white/95 backdrop-blur-md'}`}>
         <div className="container-responsive">
           <div className="flex items-center justify-between h-16 gap-6">
             {/* Logo */}
             <Link href="/" className="flex-shrink-0 group">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-400 to-primary-600 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue to-navy flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-md">
                   <span className="text-xl font-black text-white">T</span>
                 </div>
                 <div>
-                  <span className="text-xl font-black text-primary-800 tracking-tight">
+                  <span className="text-xl font-black text-navy tracking-tight">
                     THÈSE<span className="text-gradient">PRO</span>
                   </span>
-                  <span className="block text-[10px] text-neutral-400 -mt-1 tracking-wider">{t('header.academicExperts')}</span>
+                  <span className="block text-[10px] text-navy/50 -mt-1 tracking-wider">{t('header.academicExperts')}</span>
                 </div>
               </div>
             </Link>
@@ -85,11 +85,11 @@ export function Header() {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder={t('header.search')}
-                  className="w-full h-11 pl-12 pr-12 text-sm rounded-xl bg-primary-50/50 border border-primary-100 text-primary-800 placeholder:text-neutral-400 focus:border-primary-400/50 focus:bg-white outline-none transition-all duration-300"
+                  className="w-full h-11 pl-11 pr-12 text-sm rounded-xl bg-bg border border-blue/8 text-navy placeholder:text-navy/40 focus:border-blue/30 focus:bg-white focus:shadow-sm outline-none transition-all duration-300"
                 />
-                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400 group-focus-within:text-primary-400 transition-colors" />
-                <button type="submit" className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-lg bg-primary-400 hover:bg-primary-500 flex items-center justify-center transition-all duration-300 hover:scale-105">
-                  <Search className="w-4 h-4 text-white" />
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-navy/50 group-focus-within:text-blue transition-colors" />
+                <button type="submit" className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-lg bg-gradient-to-br from-blue to-navy hover:from-navy hover:to-navy flex items-center justify-center transition-all duration-300 hover:scale-105 shadow-sm">
+                  <Search className="w-3.5 h-3.5 text-white" />
                 </button>
               </div>
             </form>
@@ -100,23 +100,23 @@ export function Header() {
               <div className="relative">
                 <button
                   onClick={() => setLangOpen(!langOpen)}
-                  className="h-10 px-3 rounded-xl glass hover:bg-primary-50/50 flex items-center gap-2 transition-all duration-300 group"
+                  className="h-10 px-3 rounded-xl bg-bg hover:bg-blue/5 flex items-center gap-2 transition-all duration-300 group"
                 >
-                  <Globe className="w-4 h-4 text-neutral-400 group-hover:text-primary-400 transition-colors" />
-                  <span className="text-xs font-bold text-primary-700 uppercase">{locale}</span>
-                  <ChevronDown className={`w-3 h-3 text-neutral-400 transition-transform ${langOpen ? 'rotate-180' : ''}`} />
+                  <Globe className="w-4 h-4 text-navy/50 group-hover:text-blue transition-colors" />
+                  <span className="text-xs font-bold text-navy uppercase">{locale}</span>
+                  <ChevronDown className={`w-3 h-3 text-navy/50 transition-transform ${langOpen ? 'rotate-180' : ''}`} />
                 </button>
                 {langOpen && (
-                  <div className="absolute right-0 top-full mt-1 w-32 bg-white border border-primary-100 rounded-xl shadow-xl z-50 overflow-hidden">
+                  <div className="absolute right-0 top-full mt-1 w-32 bg-white border border-blue/10 rounded-xl shadow z-50 overflow-hidden">
                     <button
                       onClick={() => switchLang('fr')}
-                      className={`w-full flex items-center gap-2 px-4 py-2.5 text-sm hover:bg-primary-50 transition-colors ${locale === 'fr' ? 'text-primary-400 font-semibold' : 'text-primary-700'}`}
+                      className={`w-full flex items-center gap-2 px-4 py-2.5 text-sm hover:bg-blue/5 transition-colors ${locale === 'fr' ? 'text-blue font-semibold' : 'text-navy'}`}
                     >
                       <span>🇫🇷</span> Français
                     </button>
                     <button
                       onClick={() => switchLang('en')}
-                      className={`w-full flex items-center gap-2 px-4 py-2.5 text-sm hover:bg-primary-50 transition-colors ${locale === 'en' ? 'text-primary-400 font-semibold' : 'text-primary-700'}`}
+                      className={`w-full flex items-center gap-2 px-4 py-2.5 text-sm hover:bg-blue/5 transition-colors ${locale === 'en' ? 'text-blue font-semibold' : 'text-navy'}`}
                     >
                       <span>🇬🇧</span> English
                     </button>
@@ -128,7 +128,7 @@ export function Header() {
                 <UserMenu user={user} />
               ) : (
                 <Link href="/login">
-                  <button className="h-11 px-6 rounded-xl bg-gradient-to-r from-primary-400 to-primary-500 hover:from-primary-500 hover:to-primary-600 text-white font-semibold text-sm transition-all duration-300 hover:scale-105 shadow-lg shadow-primary-400/20">
+                  <button className="h-11 px-6 rounded-xl bg-gradient-to-r from-blue to-navy hover:from-navy hover:to-navy text-white font-semibold text-sm transition-all duration-300 hover:scale-105 shadow-md">
                     {t('header.login')}
                   </button>
                 </Link>
@@ -136,32 +136,32 @@ export function Header() {
             </div>
 
             {/* Mobile toggle */}
-            <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="md:hidden p-2 text-primary-700 hover:text-primary-400 transition-colors">
+            <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="md:hidden p-2 text-navy hover:text-blue transition-colors">
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
         </div>
 
         {/* Navigation secondaire */}
-        <nav className="border-t border-primary-100">
+        <nav className="border-t border-blue/10">
           <div className="container-responsive">
             <div className="flex items-center gap-1 h-11 overflow-x-auto hide-scrollbar">
-              <Link href="/" className="flex-shrink-0 px-4 py-2 text-sm text-primary-800 font-medium hover:text-primary-400 transition-colors relative group">
+              <Link href="/" className="flex-shrink-0 px-4 py-2 text-sm text-navy font-semibold hover:text-blue transition-colors relative group">
                 {t('header.forYou')}
-                <span className="absolute bottom-0 left-4 right-4 h-0.5 bg-primary-400 scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
+                <span className="absolute bottom-0 left-4 right-4 h-0.5 bg-blue scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
               </Link>
-              <Link href="/services" className="flex-shrink-0 px-4 py-2 text-sm text-neutral-400 hover:text-primary-800 transition-colors">
+              <Link href="/services" className="flex-shrink-0 px-4 py-2 text-sm text-navy/50 hover:text-navy transition-colors">
                 {t('header.bestServices')}
               </Link>
-              <Link href="/freelances" className="flex-shrink-0 px-4 py-2 text-sm text-neutral-400 hover:text-primary-800 transition-colors">
+              <Link href="/freelances" className="flex-shrink-0 px-4 py-2 text-sm text-navy/50 hover:text-navy transition-colors">
                 {t('header.bestFreelances')}
               </Link>
-              <span className="w-px h-4 bg-primary-100 flex-shrink-0 mx-2" />
+              <span className="w-px h-4 bg-blue/10 flex-shrink-0 mx-2" />
               {categories.map((cat) => (
                 <Link
                   key={cat.slug}
                   href={`/services?category=${cat.slug}`}
-                  className="flex-shrink-0 px-4 py-2 text-sm text-neutral-400 hover:text-primary-800 transition-colors whitespace-nowrap"
+                  className="flex-shrink-0 px-4 py-2 text-sm text-navy/50 hover:text-navy transition-colors whitespace-nowrap"
                 >
                   {cat.name}
                 </Link>
@@ -176,20 +176,20 @@ export function Header() {
 
       {/* Menu mobile */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 z-40 bg-white/95 backdrop-blur-xl md:hidden" onClick={() => setMobileMenuOpen(false)}>
+        <div className="fixed inset-0 z-40 bg-white/98 backdrop-blur-xl md:hidden" onClick={() => setMobileMenuOpen(false)}>
           <div className="absolute top-16 left-0 right-0 max-h-[calc(100vh-64px)] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
             <div className="p-6 space-y-4">
               {/* Language switcher mobile */}
               <div className="flex items-center gap-2 mb-4">
                 <button
                   onClick={() => switchLang('fr')}
-                  className={`flex-1 flex items-center justify-center gap-2 h-10 rounded-xl text-sm font-medium transition-all ${locale === 'fr' ? 'bg-primary-400/20 text-primary-400 border border-primary-400/30' : 'glass text-neutral-500'}`}
+                  className={`flex-1 flex items-center justify-center gap-2 h-10 rounded-xl text-sm font-medium transition-all ${locale === 'fr' ? 'bg-blue/10 text-blue border border-blue/20' : 'bg-bg text-navy/60'}`}
                 >
                   🇫🇷 Français
                 </button>
                 <button
                   onClick={() => switchLang('en')}
-                  className={`flex-1 flex items-center justify-center gap-2 h-10 rounded-xl text-sm font-medium transition-all ${locale === 'en' ? 'bg-primary-400/20 text-primary-400 border border-primary-400/30' : 'glass text-neutral-500'}`}
+                  className={`flex-1 flex items-center justify-center gap-2 h-10 rounded-xl text-sm font-medium transition-all ${locale === 'en' ? 'bg-blue/10 text-blue border border-blue/20' : 'bg-bg text-navy/60'}`}
                 >
                   🇬🇧 English
                 </button>
@@ -202,30 +202,30 @@ export function Header() {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder={t('header.searchShort')}
-                  className="w-full h-12 pl-12 pr-4 text-sm rounded-xl bg-primary-50 border border-primary-100 text-primary-800 placeholder:text-neutral-400 outline-none focus:border-primary-400/50"
+                  className="w-full h-12 pl-12 pr-4 text-sm rounded-xl bg-bg border border-blue/8 text-navy placeholder:text-navy/40 outline-none focus:border-blue/30 focus:shadow-sm"
                 />
-                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-navy/50" />
               </form>
 
               {/* Navigation */}
               <div className="space-y-1">
-                <Link href="/" className="block px-4 py-3 text-primary-800 font-medium rounded-xl hover:bg-primary-50 transition-colors" onClick={() => setMobileMenuOpen(false)}>
+                <Link href="/" className="block px-4 py-3 text-navy font-semibold rounded-xl hover:bg-blue/5 transition-colors" onClick={() => setMobileMenuOpen(false)}>
                   {t('header.forYou')}
                 </Link>
-                <Link href="/services" className="block px-4 py-3 text-neutral-500 rounded-xl hover:bg-primary-50 hover:text-primary-800 transition-colors" onClick={() => setMobileMenuOpen(false)}>
+                <Link href="/services" className="block px-4 py-3 text-navy/50 rounded-xl hover:bg-blue/5 hover:text-navy transition-colors" onClick={() => setMobileMenuOpen(false)}>
                   {t('header.bestServices')}
                 </Link>
-                <Link href="/freelances" className="block px-4 py-3 text-neutral-500 rounded-xl hover:bg-primary-50 hover:text-primary-800 transition-colors" onClick={() => setMobileMenuOpen(false)}>
+                <Link href="/freelances" className="block px-4 py-3 text-navy/50 rounded-xl hover:bg-blue/5 hover:text-navy transition-colors" onClick={() => setMobileMenuOpen(false)}>
                   {t('header.bestFreelances')}
                 </Link>
               </div>
 
               {/* Catégories */}
-              <div className="pt-4 border-t border-primary-100">
-                <p className="px-4 text-xs text-neutral-500 uppercase tracking-wider mb-3">{t('header.categories')}</p>
+              <div className="pt-4 border-t border-blue/10">
+                <p className="px-4 text-xs text-navy/50 uppercase tracking-wider mb-3">{t('header.categories')}</p>
                 <div className="space-y-1">
                   {categories.map((cat) => (
-                    <Link key={cat.slug} href={`/services?category=${cat.slug}`} className="block px-4 py-2.5 text-sm text-neutral-500 rounded-xl hover:bg-primary-50 hover:text-primary-800 transition-colors" onClick={() => setMobileMenuOpen(false)}>
+                    <Link key={cat.slug} href={`/services?category=${cat.slug}`} className="block px-4 py-2.5 text-sm text-navy/50 rounded-xl hover:bg-blue/5 hover:text-navy transition-colors" onClick={() => setMobileMenuOpen(false)}>
                       {cat.name}
                     </Link>
                   ))}
@@ -233,25 +233,25 @@ export function Header() {
               </div>
 
               {/* Auth */}
-              <div className="pt-4 border-t border-primary-100">
+              <div className="pt-4 border-t border-blue/10">
                 {user ? (
                   <>
-                    <Link href="/dashboard" className="block px-4 py-3 text-primary-800 font-medium rounded-xl hover:bg-primary-50 transition-colors" onClick={() => setMobileMenuOpen(false)}>
+                    <Link href="/dashboard" className="block px-4 py-3 text-navy font-semibold rounded-xl hover:bg-blue/5 transition-colors" onClick={() => setMobileMenuOpen(false)}>
                       {t('header.dashboard')}
                     </Link>
-                    <Link href="/settings" className="block px-4 py-3 text-neutral-500 rounded-xl hover:bg-primary-50 hover:text-primary-800 transition-colors" onClick={() => setMobileMenuOpen(false)}>
+                    <Link href="/settings" className="block px-4 py-3 text-navy/50 rounded-xl hover:bg-blue/5 hover:text-navy transition-colors" onClick={() => setMobileMenuOpen(false)}>
                       {t('header.settings')}
                     </Link>
-                    <button onClick={() => { fetch('/api/auth/logout', { method: 'POST' }); document.cookie = 'thesepro_token=; path=/; max-age=0'; window.location.href = '/login'; }} className="block w-full text-left px-4 py-3 text-red-500 rounded-xl hover:bg-red-50 transition-colors">
+                    <button onClick={() => { fetch('/api/auth/logout', { method: 'POST' }); document.cookie = 'thesepro_token=; path=/; max-age=0'; window.location.href = '/login'; }} className="block w-full text-left px-4 py-3 text-navy rounded-xl hover:bg-blue/5 transition-colors">
                       {t('header.logout')}
                     </button>
                   </>
                 ) : (
                   <>
-                    <Link href="/login" className="block px-4 py-3 text-neutral-500 rounded-xl hover:bg-primary-50 hover:text-primary-800 transition-colors" onClick={() => setMobileMenuOpen(false)}>
+                    <Link href="/login" className="block px-4 py-3 text-navy/50 rounded-xl hover:bg-blue/5 hover:text-navy transition-colors" onClick={() => setMobileMenuOpen(false)}>
                       {t('header.loginMobile')}
                     </Link>
-                    <Link href="/register" className="block px-4 py-3 text-white font-semibold bg-primary-400 rounded-xl text-center mt-2" onClick={() => setMobileMenuOpen(false)}>
+                    <Link href="/register" className="block px-4 py-3 text-white font-semibold bg-gradient-to-r from-blue to-navy rounded-xl text-center mt-2 shadow-md" onClick={() => setMobileMenuOpen(false)}>
                       {t('header.register')}
                     </Link>
                   </>

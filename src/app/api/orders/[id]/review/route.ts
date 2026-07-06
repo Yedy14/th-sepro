@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getCurrentUser } from '@/lib/auth';
+import prisma from '@/lib/db';
 import { createReview } from '@/lib/data-service';
 
 export async function POST(request: NextRequest, { params }: { params: { id: string } }) {
@@ -14,9 +15,6 @@ export async function POST(request: NextRequest, { params }: { params: { id: str
       return NextResponse.json({ error: 'Note invalide' }, { status: 400 });
     }
 
-    const { default: prisma } = await import('@/lib/db');
-
-    // Verify order exists and belongs to user
     const order = await prisma.order.findUnique({
       where: { id: params.id },
       include: { review: true },

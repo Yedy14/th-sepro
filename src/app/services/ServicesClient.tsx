@@ -52,42 +52,39 @@ export function ServicesClient({ services, categories, freelances }: ServicesCli
   ];
 
   return (
-    <div className="min-h-screen bg-[#edf6fd] noise-overlay">
-      {/* Hero header with gradient */}
-      <div className="relative overflow-hidden border-b border-primary-100/50">
-        <div className="absolute inset-0 bg-gradient-to-br from-neutral-950 via-dark to-neutral-950" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(234,179,8,0.08),transparent_50%)]" />
-        
+    <div className="min-h-screen bg-bg noise-overlay">
+      {/* Hero header */}
+      <div className="border-b border-blue/8 bg-white">
         <div className="container-responsive relative z-10 py-12">
           <div className="flex flex-col md:flex-row md:items-end gap-6 justify-between">
-            <div className="animate-slide-up">
-              <nav className="flex items-center gap-2 text-sm text-neutral-500 mb-4">
-                <Link href="/" className="hover:text-primary-800 transition-colors">{t('common.home')}</Link>
+            <div>
+              <nav className="flex items-center gap-2 text-sm text-navy/60 mb-4">
+                <Link href="/" className="hover:text-blue transition-colors">{t('common.home')}</Link>
                 <span>/</span>
-                <span className="text-primary-700">{t('services.breadcrumb')}</span>
+                <span className="text-navy">{t('services.breadcrumb')}</span>
               </nav>
-              <h1 className="text-4xl md:text-5xl font-black text-primary-800 mb-3">
-                {t('services.title1')} <span className="text-gradient-primary">{t('services.title2')}</span>
+              <h1 className="text-4xl md:text-5xl font-black text-navy mb-3">
+                {t('services.title1')} <span className="text-gradient">{t('services.title2')}</span>
               </h1>
-              <p className="text-neutral-400 text-lg">{filtered.length} {t('services.available')}</p>
+              <p className="text-navy/60 text-lg">{filtered.length} {t('services.available')}</p>
             </div>
 
             {/* Search and filters */}
-            <div className="flex flex-col sm:flex-row items-stretch gap-3 animate-slide-in-right">
+            <div className="flex flex-col sm:flex-row items-stretch gap-3">
               <div className="relative flex-1 md:w-80">
-                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-500" />
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-navy/40" />
                 <input
                   type="text"
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                   placeholder={t('services.searchPlaceholder')}
-                  className="w-full h-12 pl-11 pr-4 text-sm rounded-xl glass text-primary-800 placeholder:text-neutral-500 focus:border-primary-400/50 outline-none transition-all"
+                  className="w-full h-12 pl-11 pr-4 text-sm rounded-xl bg-bg border border-blue/8 text-navy placeholder:text-navy/40 focus:border-blue/30 focus:shadow-sm outline-none transition-all"
                 />
               </div>
               <button
                 onClick={() => setShowFilters(!showFilters)}
-                className={`flex items-center gap-2 h-12 px-5 rounded-xl text-sm font-medium transition-all ${
-                  showFilters ? 'glass text-primary-400 border-primary-400/30' : 'glass text-primary-700 hover:text-primary-800'
+                className={`flex items-center gap-2 h-12 px-5 rounded-xl text-sm font-medium transition-all border ${
+                  showFilters ? 'bg-blue/5 text-blue border-blue/20' : 'bg-bg text-navy border-blue/8 hover:bg-blue/5'
                 }`}
               >
                 <Filter className="w-4 h-4" />
@@ -104,16 +101,16 @@ export function ServicesClient({ services, categories, freelances }: ServicesCli
           <aside className={`lg:block ${showFilters ? 'block' : 'hidden'}`}>
             <div className="sticky top-[110px] space-y-6">
               {/* Categories */}
-              <div className="glass rounded-2xl p-6">
-                <h3 className="text-sm font-bold text-primary-800 mb-5 flex items-center gap-2">
-                  <Sparkles className="w-4 h-4 text-primary-400" />
+              <div className="bg-white rounded-2xl p-6 shadow-sm border border-blue/8">
+                <h3 className="text-sm font-bold text-navy mb-5 flex items-center gap-2">
+                  <Sparkles className="w-4 h-4 text-blue" />
                   {t('services.categories')}
                 </h3>
                 <div className="space-y-1">
                   <button
                     onClick={() => setSelectedCategory('all')}
                     className={`w-full text-left text-sm px-4 py-2.5 rounded-xl transition-all ${
-                      selectedCategory === 'all' ? 'glass text-primary-400 font-semibold' : 'text-neutral-400 hover:bg-primary-50 hover:text-primary-800'
+                      selectedCategory === 'all' ? 'bg-blue/5 text-blue font-semibold' : 'text-navy/70 hover:bg-blue/5 hover:text-navy'
                     }`}
                   >
                     {t('services.allCategories')}
@@ -123,46 +120,46 @@ export function ServicesClient({ services, categories, freelances }: ServicesCli
                       key={cat.slug}
                       onClick={() => setSelectedCategory(cat.slug)}
                       className={`w-full text-left text-sm px-4 py-2.5 rounded-xl transition-all flex items-center justify-between ${
-                        selectedCategory === cat.slug ? 'glass text-primary-400 font-semibold' : 'text-neutral-400 hover:bg-primary-50 hover:text-primary-800'
+                        selectedCategory === cat.slug ? 'bg-blue/5 text-blue font-semibold' : 'text-navy/70 hover:bg-blue/5 hover:text-navy'
                       }`}
                     >
                       <span className="flex items-center gap-2">
                         <span>{cat.icon}</span>
                         <span>{cat.name}</span>
                       </span>
-                      <span className="text-xs text-neutral-600">{cat.serviceCount}</span>
+                      <span className="text-xs text-navy/40">{cat.serviceCount}</span>
                     </button>
                   ))}
                 </div>
               </div>
 
               {/* Price range */}
-              <div className="glass rounded-2xl p-6">
-                <h3 className="text-sm font-bold text-primary-800 mb-5">{t('services.maxBudget')}</h3>
+              <div className="bg-white rounded-2xl p-6 shadow-sm border border-blue/8">
+                <h3 className="text-sm font-bold text-navy mb-5">{t('services.maxBudget')}</h3>
                 <div className="flex items-center gap-2">
                   <input
                     type="number"
                     value={priceRange[0]}
                     onChange={(e) => setPriceRange([+e.target.value, priceRange[1]])}
-                    className="w-full h-10 px-3 text-sm rounded-xl glass text-primary-800 outline-none focus:border-primary-400/50"
+                    className="w-full h-10 px-3 text-sm rounded-xl bg-bg border border-blue/8 text-navy outline-none focus:border-blue/30"
                     placeholder="Min"
                   />
-                  <span className="text-neutral-600">—</span>
+                  <span className="text-navy/40">—</span>
                   <input
                     type="number"
                     value={priceRange[1]}
                     onChange={(e) => setPriceRange([priceRange[0], +e.target.value])}
-                    className="w-full h-10 px-3 text-sm rounded-xl glass text-primary-800 outline-none focus:border-primary-400/50"
+                    className="w-full h-10 px-3 text-sm rounded-xl bg-bg border border-blue/8 text-navy outline-none focus:border-blue/30"
                     placeholder="Max"
                   />
                 </div>
-                <p className="text-xs text-neutral-500 mt-3">{t('services.perProject')}</p>
+                <p className="text-xs text-navy/50 mt-3">{t('services.perProject')}</p>
               </div>
 
               {/* Reset */}
               <button
                 onClick={() => { setSelectedCategory('all'); setSearch(''); setPriceRange([0, 500]); setSort('popular'); }}
-                className="w-full flex items-center justify-center gap-2 h-11 text-sm text-neutral-400 hover:text-primary-800 glass rounded-xl hover:text-primary-400 transition-all"
+                className="w-full flex items-center justify-center gap-2 h-11 text-sm text-navy/60 hover:text-blue bg-white rounded-xl border border-blue/8 hover:border-blue/20 transition-all"
               >
                 <X className="w-4 h-4" />
                 {t('services.resetFilters')}
@@ -174,15 +171,15 @@ export function ServicesClient({ services, categories, freelances }: ServicesCli
           <div>
             {/* Sort pills */}
             <div className="flex items-center gap-2 mb-8 overflow-x-auto pb-2">
-              <span className="text-sm text-neutral-500 flex-shrink-0 mr-2">{t('services.sort')}</span>
+              <span className="text-sm text-navy/60 flex-shrink-0 mr-2">{t('services.sort')}</span>
               {sortOptions.map((opt) => {
                 const Icon = opt.icon;
                 return (
                   <button
                     key={opt.value}
                     onClick={() => setSort(opt.value)}
-                    className={`text-sm px-4 py-2 rounded-xl whitespace-nowrap transition-all flex items-center gap-2 ${
-                      sort === opt.value ? 'glass text-primary-400 font-semibold' : 'text-neutral-400 glass hover:text-primary-800'
+                    className={`text-sm px-4 py-2 rounded-xl whitespace-nowrap transition-all flex items-center gap-2 border ${
+                      sort === opt.value ? 'bg-blue/5 text-blue border-blue/20 font-semibold' : 'bg-white text-navy/70 border-blue/8 hover:text-navy'
                     }`}
                   >
                     {Icon && <Icon className="w-3.5 h-3.5" />}
@@ -205,12 +202,12 @@ export function ServicesClient({ services, categories, freelances }: ServicesCli
                 })}
               </div>
             ) : (
-              <div className="text-center py-20 glass rounded-3xl">
-                <div className="w-16 h-16 rounded-2xl bg-primary-50 flex items-center justify-center mx-auto mb-4">
-                  <Search className="w-8 h-8 text-neutral-600" />
+              <div className="text-center py-20 bg-white rounded-3xl shadow-sm border border-blue/8">
+                <div className="w-16 h-16 rounded-2xl bg-blue/5 flex items-center justify-center mx-auto mb-4">
+                  <Search className="w-8 h-8 text-navy/40" />
                 </div>
-                <p className="text-neutral-400 text-lg font-semibold mb-2">{t('services.noService')}</p>
-                <p className="text-neutral-600 text-sm">{t('services.noServiceDesc')}</p>
+                <p className="text-navy/70 text-lg font-semibold mb-2">{t('services.noService')}</p>
+                <p className="text-navy/50 text-sm">{t('services.noServiceDesc')}</p>
               </div>
             )}
           </div>

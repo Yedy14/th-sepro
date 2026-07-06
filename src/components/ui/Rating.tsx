@@ -25,10 +25,10 @@ export function Rating({ value, count, size = 'md', showCount = true, className 
 
   return (
     <div className={cn('inline-flex items-center gap-1', className)}>
-      <Star className={cn(sizes[size], 'fill-amber-400 text-amber-400')} />
-      <span className={cn(textSizes[size], 'font-semibold text-neutral-900')}>{value.toFixed(1)}</span>
+      <Star className={cn(sizes[size], 'fill-blue text-blue')} />
+      <span className={cn(textSizes[size], 'font-semibold text-navy')}>{value.toFixed(1)}</span>
       {showCount && count !== undefined && (
-        <span className={cn(textSizes[size], 'text-neutral-500')}>({count})</span>
+        <span className={cn(textSizes[size], 'text-navy/70')}>({count})</span>
       )}
     </div>
   );
